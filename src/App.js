@@ -7,6 +7,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
+          Remove Later: This application will be able to CRUD exercises into a library.
+        </p>
+        <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
