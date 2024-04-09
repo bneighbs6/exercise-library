@@ -1,8 +1,11 @@
-import React from "react"
+import React from "react";
+import Header from "../Components/Header";
 
 function Layout() {
     return (
-        <h1>Exercise Library</h1>
+        <div>
+            <Header />
+        </div>
     )
 }
 
