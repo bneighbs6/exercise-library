@@ -11,7 +11,7 @@ It will have:
 - More items....
 */
 
-function Navbar() {
+export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-info-subtle">
       <a className="navbar-brand" href="#">Company Logo</a>
@@ -39,5 +39,3 @@ function Navbar() {
     </nav>
   )
 }
-
-export default Navbar; 

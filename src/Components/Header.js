@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header() {
+export default function Header() {
     return (
         <>
             <h1 className="text-center">The NEIGHBORShood Exercise Library</h1>
@@ -8,5 +8,3 @@ function Header() {
         </>
     )
 }
-
-export default Header; 
