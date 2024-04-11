@@ -20,7 +20,7 @@ function Layout() {
             </div>
             <Routes>
                <Route exact={true} path="/" element={<HomePage />}></Route>
-               {/* <Route path="/about" element={<AboutPage />}></Route> */}
+               <Route path="/about" element={<AboutPage />}></Route>
                {/* <Route path="/push-exercises" element={<PushPage />}></Route> */}
                {/* <Route path="/pull-exercises" element={<PullPage />}></Route> */}
                {/* <Route path="/hip-dominant-exercises" element={<HipPage />}></Route> */}
