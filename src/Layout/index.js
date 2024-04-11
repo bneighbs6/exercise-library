@@ -19,7 +19,7 @@ function Layout() {
                 <Navbar />
             </div>
             <Routes>
-               {/* <Route exact={true} path="/" element={<HomePage />}></Route> */}
+               <Route exact={true} path="/" element={<HomePage />}></Route>
                {/* <Route path="/about" element={<AboutPage />}></Route> */}
                {/* <Route path="/push-exercises" element={<PushPage />}></Route> */}
                {/* <Route path="/pull-exercises" element={<PullPage />}></Route> */}
