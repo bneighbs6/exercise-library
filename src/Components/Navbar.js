@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 /* 
 Navbar will be how user navigates web page
@@ -14,9 +14,9 @@ It will have:
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-info-subtle">
-      <a className="navbar-brand" href="#">Company Logo</a>
-      <a className="navbar-item" href="#">Home</a>
-      <a className="navbar-item" href="#">About</a>
+      <Link className="navbar-brand" to="/">Company Logo</Link>
+      <Link className="navbar-item" to="/">Home</Link>
+      <Link className="navbar-item" to="/about">About</Link>
       <div className="dropdown">
         {/* DEBUG: Dropdown menu does not dropdown when pressed */}
         <div className="btn-group navbar-collapse">
@@ -37,5 +37,5 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
