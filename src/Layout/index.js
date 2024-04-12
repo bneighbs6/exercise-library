@@ -3,7 +3,7 @@ import Header from "../Components/Header";
 import Navbar from "../Components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../Components/WebPages/HomePage/HomePage";
-import AboutPage from "../Components/WebPages/AboutPage";
+import AboutPage from "../Components/WebPages/AboutPage/AboutPage";
 import PushPage from "../Components/WebPages/PushPage";
 import PullPage from "../Components/WebPages/PullPage";
 import HipPage from "../Components/WebPages/HipPage";
