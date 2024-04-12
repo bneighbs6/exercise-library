@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import HomePageCard from "./HomePageCards";
 
 /* 
@@ -8,7 +7,6 @@ You need to set up what your home page will look like
 */
 
 function HomePage() {
-    const navigate = useNavigate();
     return (
         <>
             <div className="container">
