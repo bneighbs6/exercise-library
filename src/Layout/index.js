@@ -2,12 +2,12 @@ import React from "react";
 import Header from "../Components/Header";
 import Navbar from "../Components/Navbar";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "../Components/WebPages/HomePage/HomePage";
-import AboutPage from "../Components/WebPages/AboutPage/AboutPage";
-import PushPage from "../Components/WebPages/PushPage";
-import PullPage from "../Components/WebPages/PullPage";
-import HipPage from "../Components/WebPages/HipPage";
-import KneePage from "../Components/WebPages/KneePage";
+import HomePage from "../WebPages/HomePage/HomePage";
+import AboutPage from "../WebPages/AboutPage"
+import PushPage from "../WebPages/PushPage/PushPage";
+import PullPage from "../WebPages/PullPage/PullPage";
+import HipPage from "../WebPages/HipPage/HipPage";
+import KneePage from "../WebPages/KneePage/KneePage";
 
 function Layout() {
   return (
