@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../Components/Header";
 import Navbar from "../Components/Navbar";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "../Components/WebPages/HomePage";
+import HomePage from "../Components/WebPages/HomePage/HomePage";
 import AboutPage from "../Components/WebPages/AboutPage";
 import PushPage from "../Components/WebPages/PushPage";
 import PullPage from "../Components/WebPages/PullPage";
