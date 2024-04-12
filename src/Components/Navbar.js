@@ -19,8 +19,8 @@ export default function Navbar() {
       <Link className="navbar-item" to="/about">About</Link>
       <div className="dropdown">
         {/* DEBUG: Dropdown menu does not dropdown when pressed */}
-        <div className="btn-group navbar-collapse">
           <button
+            onClick={() => console.log("Dropdown Clicked")}
             className="btn btn-dark dropdown-toggle"
             type="button"
             data-bs-toggle="dropdown"
@@ -34,7 +34,6 @@ export default function Navbar() {
             <li className="dropdown-item">Knee Dominant Exercises</li>
             <li className="dropdown-item">Trunk Exercises</li>
           </ul>
-        </div>
       </div>
     </nav>
   );
