@@ -1,6 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+/* 
+Card will display an image,
+the exercise type as its title,
+some text,
+a button to go to a web page specific for that exercise
+ */
+
 function HomePageCard({ exerciseType, exerciseUrl }) {
 
     const navigate = useNavigate();

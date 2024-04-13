@@ -1,5 +1,11 @@
 import React from "react";
 
+/* 
+Page should display a couple of columns describing different parts of the business
+Maybe why you created the exercise library
+How this library differs from others
+*/
+
 export default function AboutPage() {
     return (
         <>
