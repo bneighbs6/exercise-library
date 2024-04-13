@@ -9,7 +9,6 @@ and a button to go directly to that exercise's web page
 
 function PushPageCard() {
   return (
-    <div className="card-deck">
     <div className="card mx-auto my-3" style={{width: "18rem"}}>
       <img className="card-img-top" src="..." alt="Push exercise" />
       <div className="card-body">
@@ -22,7 +21,6 @@ function PushPageCard() {
           Go somewhere
         </a>
       </div>
-    </div>
     </div>
   );
 }

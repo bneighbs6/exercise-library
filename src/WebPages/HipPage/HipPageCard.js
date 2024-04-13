@@ -10,7 +10,7 @@ and a button to go directly to that exercise's web page
 function HipPageCard() {
     return (
         <>
-        <div className="card" style={{ width: "18rem" }}>
+        <div className="card mx-auto my-3" style={{ width: "18rem" }}>
           <img className="card-img-top" src="..." alt="Hip exercise" />
           <div className="card-body">
             <h5 className="card-title">Hip Page Card</h5>
