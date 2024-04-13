@@ -8,6 +8,7 @@ import PushPage from "../WebPages/PushPage/PushPage";
 import PullPage from "../WebPages/PullPage/PullPage";
 import HipPage from "../WebPages/HipPage/HipPage";
 import KneePage from "../WebPages/KneePage/KneePage";
+import CorePage from "../WebPages/CorePage/CorePage";
 
 function Layout() {
   return (
@@ -19,7 +20,7 @@ function Layout() {
       <div>
         <Navbar />
       </div>
-      
+
       <Routes>
         <Route exact={true} path="/" element={<HomePage />}></Route>
         <Route path="/about" element={<AboutPage />}></Route>
@@ -27,6 +28,7 @@ function Layout() {
         <Route path="/pull-exercises" element={<PullPage />}></Route>
         <Route path="/hip-exercises" element={<HipPage />}></Route>
         <Route path="/knee-exercises" element={<KneePage />}></Route>
+        <Route path="/core-exercises" element={<CorePage />}></Route>
       </Routes>
     </>
   )

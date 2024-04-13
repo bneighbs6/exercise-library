@@ -25,7 +25,7 @@ function HomePage() {
                     <div className="row">
 
                         <div className="col text-center">
-                            <HomePageCard exerciseType={"Trunk"} exerciseUrl={"trunk"} />
+                            <HomePageCard exerciseType={"Core"} exerciseUrl={"core"} />
                         </div>
                     </div>
 
