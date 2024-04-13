@@ -12,13 +12,13 @@ It will have:
 - More items....
 */
 
-export default function Navbar() {
+function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-info-subtle">
-      <Link className="navbar-brand" to="/">Company Logo</Link>
-      <Link className="navbar-item" to="/">Home</Link>
-      <Link className="navbar-item" to="/about">About</Link>
-      <div className="dropdown">
+      <Link className="navbar-brand mx-1 mx-md-2 mx-lg-5" to="/">Company Logo</Link>
+      <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/">Home</Link>
+      <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/about">About</Link>
+      <div className="dropdown mx-3 mx-md-2 mx-lg-5">
         {/* DEBUG: Dropdown menu does not dropdown when pressed */}
         <button
           onClick={() => console.log("Dropdown Clicked")}
@@ -36,12 +36,14 @@ export default function Navbar() {
           <li className="dropdown-item">Trunk Exercises</li>
         </ul>
       </div>
-      <div className="search-bar">
+      <div className="search-bar ms-auto">
         <form className="d-flex" role="search">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          <input className="form-control mx-1 mx-md-2 mx-lg-5 fixed-width" type="search" placeholder="Search" aria-label="Search" />
           <button className="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </nav>
   );
 }
+
+export default Navbar; 

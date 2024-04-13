@@ -9,15 +9,21 @@ import PullPage from "../WebPages/PullPage/PullPage";
 import HipPage from "../WebPages/HipPage/HipPage";
 import KneePage from "../WebPages/KneePage/KneePage";
 import CorePage from "../WebPages/CorePage/CorePage";
+import Footer from "../Components/Footer";
+
+/* 
+The Layout function will be the layout for the entire web page
+It will include a Header, Navbar, main body (Routes), and a Footer
+*/
 
 function Layout() {
   return (
     <>
-      <div>
+      <div className="header my-4">
         <Header />
       </div>
 
-      <div>
+      <div className="navigation-bar my-4">
         <Navbar />
       </div>
 
@@ -30,6 +36,10 @@ function Layout() {
         <Route path="/knee-exercises" element={<KneePage />}></Route>
         <Route path="/core-exercises" element={<CorePage />}></Route>
       </Routes>
+
+      <div className="footer my-4">
+        <Footer />
+      </div>
     </>
   )
 }
