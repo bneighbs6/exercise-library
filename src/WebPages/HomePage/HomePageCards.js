@@ -17,7 +17,7 @@ function HomePageCard({ exerciseType, exerciseUrl }) {
     }
     return (
         <>
-            <div className="card" style={{ width: "18rem" }}>
+            <div className="card mx-auto my-5" style={{ width: "18rem" }}>
                 <img src="..." className="card-img-top" alt="exercise" />
                 <div className="card-body">
                     <h5 className="card-title">{`${exerciseType} Exercises`}</h5>
