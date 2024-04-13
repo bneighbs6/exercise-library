@@ -4,7 +4,7 @@ import PushPageCard from "./PushPageCard";
 export default function PushPage() {
   return (
     <>
-      <h1>Push Exercises</h1>
+      <h1 className="text-center">Push Exercises</h1>
       <div className="row">
         <div className="col">
           <PushPageCard />
