@@ -23,7 +23,7 @@ function Layout() {
         <Route path="/about" element={<AboutPage />}></Route>
         <Route path="/push-exercises" element={<PushPage />}></Route>
         <Route path="/pull-exercises" element={<PullPage />}></Route>
-        <Route path="/hip-dominant-exercises" element={<HipPage />}></Route>
+        <Route path="/hip-exercises" element={<HipPage />}></Route>
         <Route path="/knee-dominant-exercises" element={<KneePage />}></Route>
       </Routes>
     </>

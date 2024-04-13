@@ -1,5 +1,26 @@
 import React from "react";
+import HipPageCard from "./HipPageCard";
 
-export default function HipPage() {
-    return <h1>Hip Dominant Exercises</h1>
+function HipPage() {
+  return (
+    <>
+      <h1>Hip Dominant Exercises</h1>
+      <div className="row">
+        <div className="col">
+          <HipPageCard />
+        </div>
+        <div className="col">
+          <HipPageCard />
+        </div>
+        <div className="col">
+          <HipPageCard />
+        </div>
+        <div className="col">
+          <HipPageCard />
+        </div>
+      </div>
+    </>
+  );
 }
+
+export default HipPage;
