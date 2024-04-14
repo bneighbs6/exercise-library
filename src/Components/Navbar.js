@@ -18,6 +18,7 @@ function Navbar() {
       <Link className="navbar-brand mx-1 mx-md-2 mx-lg-5" to="/">Company Logo</Link>
       <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/">Home</Link>
       <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/about">About</Link>
+      <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/new-exercise">Create New Exercise</Link>
       <div className="dropdown mx-3 mx-md-2 mx-lg-5">
         {/* DEBUG: Dropdown menu does not dropdown when pressed */}
         <button
