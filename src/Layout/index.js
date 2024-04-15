@@ -19,10 +19,8 @@ It will include a Header, Navbar, main body (Routes), and a Footer
 
 /* 
 START HERE MOTHAFUCKA
-You just got finished spacing your cards in HomePage and PushPage
-Continue spacing the rest of the web pages to be uniform with the rest
-Maybe see how we can create one card file so we don't have to continuously
-update each card file
+You just got finished creating NewExercisePage w/ a pretty substandard form
+Make the form more professsional
 */
 
 function Layout() {

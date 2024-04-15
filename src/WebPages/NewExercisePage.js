@@ -1,27 +1,43 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function NewExercisePage() {
+    const navigate = useNavigate();
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log("Form submitted.")
+        return navigate("/new-exercise");
+    }
+
+    function handleCancel(e) {
+        e.preventDefault();
+        console.log("Form cancelled.")
+        return navigate("/new-exercise");
+    }
+
     return (
         <>
-        <div className="card text-center mx-auto" style={{width: "72rem"}}>
+        <div className="card text-center mx-auto" style={{width: "60rem"}}>
             <div className="card-title">
                 <h1>New Exercise</h1>
             </div>
         <form>
-        <div className="form-group">
-            <label for="exerciseName">Exercise Name</label>
-            <input type="text" className="form-control text-center" placeholder="Exercise name here" />
+        <div className="form-group" id="exerciseName">
+            <label htmlFor="exerciseNameInput">Exercise Name</label>
+            <input type="text" className="form-control text-center" id="exerciseNameInput" name="exerciseName" placeholder="Exercise name here" />
         </div>
-        <div className="form-group">
-            <label for="exerciseType">Exercise Type</label>
-            <input type="text" className="form-control text-center" placeholder="Push, Pull, Hip, Knee, or Core" />
+        <div className="form-group" id="exercisePattern">
+            <label htmlFor="exercisePatternInput">Exercise Pattern</label>
+            <input type="text" className="form-control text-center" id="exercisePatternInput" name="exerciseType" placeholder="Push, Pull, Hip, Knee, or Core" />
         </div>
         {/* You need to create an actual submit button */}
-        <button className="btn btn-success">Submit</button>
+        <button className="btn btn-success" onClick={handleSubmit}>Submit</button>
+        <button className="btn btn-danger" onClick={handleCancel}>Cancel</button>
     </form>
         </div>
         </>
     )
 }
 
-export default NewExercisePage; 
+export default NewExercisePage;
