@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 function NewExercisePage() {
     const navigate = useNavigate();
 
+/* You need to create an actual submit button */  
     function handleSubmit(e) {
         e.preventDefault();
         console.log("Form submitted.")
@@ -11,7 +12,6 @@ function NewExercisePage() {
     }
 
     function handleCancel(e) {
-        e.preventDefault();
         console.log("Form cancelled.")
         return navigate("/new-exercise");
     }
@@ -31,7 +31,6 @@ function NewExercisePage() {
             <label htmlFor="exercisePatternInput">Exercise Pattern</label>
             <input type="text" className="form-control text-center" id="exercisePatternInput" name="exerciseType" placeholder="Push, Pull, Hip, Knee, or Core" />
         </div>
-        {/* You need to create an actual submit button */}
         <button className="btn btn-success" onClick={handleSubmit}>Submit</button>
         <button className="btn btn-danger" onClick={handleCancel}>Cancel</button>
     </form>

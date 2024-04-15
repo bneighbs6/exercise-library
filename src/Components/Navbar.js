@@ -19,8 +19,8 @@ function Navbar() {
       <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/">Home</Link>
       <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/about">About</Link>
       <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/new-exercise">Create New Exercise</Link>
-      <div className="dropdown mx-3 mx-md-2 mx-lg-5">
-        {/* DEBUG: Dropdown menu does not dropdown when pressed */}
+              {/* DEBUG: Dropdown menu does not dropdown when pressed */}
+{/*       <div className="dropdown mx-3 mx-md-2 mx-lg-5">
         <button
           onClick={() => console.log("Dropdown Clicked")}
           className="btn btn-dark dropdown-toggle"
@@ -36,7 +36,7 @@ function Navbar() {
           <li className="dropdown-item">Knee Dominant Exercises</li>
           <li className="dropdown-item">Trunk Exercises</li>
         </ul>
-      </div>
+      </div> */}
       <div className="search-bar ms-auto">
         <form className="d-flex" role="search">
           <input className="form-control mx-1 mx-md-2 mx-lg-5 fixed-width" type="search" placeholder="Search" aria-label="Search" />
