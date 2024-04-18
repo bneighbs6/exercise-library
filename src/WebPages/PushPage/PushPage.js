@@ -1,24 +1,25 @@
 import React from "react";
 import PushPageCard from "./PushPageCard";
+import { Row, Col } from "react-bootstrap";
 
 export default function PushPage() {
   return (
     <>
       <h1 className="text-center">Push Exercises</h1>
-      <div className="row">
-        <div className="col">
+      <Row>
+        <Col>
           <PushPageCard />
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <PushPageCard />
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <PushPageCard />
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <PushPageCard />
-        </div>
-      </div>
+        </Col>
+      </Row>
     </>
   );
 }

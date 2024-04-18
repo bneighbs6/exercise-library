@@ -1,4 +1,5 @@
 import React from "react";
+import { Card } from "react-bootstrap";
 
 /* 
 Card will display an image, 
@@ -10,7 +11,7 @@ and a button to go directly to that exercise's web page
 function CorePageCard() {
   return (
     <>
-      <div className="card" style={{ width: "18rem" }}>
+      <Card className="mx-auto my-3" style={{ width: "18rem" }}>
         <img className="card-img-top" src="..." alt="knee exercise" />
         <div className="card-body">
           <div className="card-title">Core Page Card</div>
@@ -22,7 +23,7 @@ function CorePageCard() {
             Go Somewhere
           </a>
         </div>
-      </div>
+      </Card>
     </>
   );
 }

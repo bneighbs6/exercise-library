@@ -1,24 +1,25 @@
 import React from "react";
 import HipPageCard from "./HipPageCard";
+import { Row, Col } from "react-bootstrap";
 
 function HipPage() {
   return (
     <>
       <h1>Hip Dominant Exercises</h1>
-      <div className="row">
-        <div className="col">
+      <Row>
+        <Col>
           <HipPageCard />
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <HipPageCard />
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <HipPageCard />
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <HipPageCard />
-        </div>
-      </div>
+        </Col>
+      </Row>
     </>
   );
 }

@@ -1,24 +1,27 @@
 import React from "react";
 import PullPageCard from "./PullPageCard";
+import { Row, Col } from "react-bootstrap";
 
-export default function PullPage() {
+function PullPage() {
   return (
     <>
       <h1>Pull Exercises</h1>
-      <div className="row">
-        <div className="col">
+      <Row>
+        <Col>
           <PullPageCard />
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <PullPageCard />
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <PullPageCard />
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
           <PullPageCard />
-        </div>
-      </div>
+        </Col>
+      </Row>
     </>
   );
 }
+
+export default PullPage;

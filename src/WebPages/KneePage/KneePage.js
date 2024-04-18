@@ -1,24 +1,25 @@
 import React from "react";
 import KneePageCard from "./KneePageCard";
+import { Row, Col } from "react-bootstrap";
 
 export default function KneePage() {
   return (
     <>
       <h1>Knee Dominant Exercises</h1>
-      <div className="row">
-        <div className="col">
+      <Row>
+        <Col>
             <KneePageCard />
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
             <KneePageCard />
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
             <KneePageCard />
-        </div>
-        <div className="col">
+        </Col>
+        <Col>
             <KneePageCard />
-        </div>
-      </div>
+        </Col>
+      </Row>
     </>
   );
 }

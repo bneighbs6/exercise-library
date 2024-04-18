@@ -1,23 +1,24 @@
 import React from "react";
 import CorePageCard from "./CorePageCard"
+import { Row, Col} from "react-bootstrap";
 function CorePage() {
     return (
         <>
         <h1>Core Exercises</h1>
-        <div className="row">
-            <div className="col">
+        <Row>
+            <Col>
                 <CorePageCard />
-            </div>
-            <div className="col">
+            </Col>
+            <Col>
                 <CorePageCard />
-            </div>
-            <div className="col">
+            </Col>
+            <Col>
                 <CorePageCard />
-            </div>
-            <div className="col">
+            </Col>
+            <Col>
                 <CorePageCard />
-            </div>
-        </div>
+            </Col>
+        </Row>
         </>
     )
 }
