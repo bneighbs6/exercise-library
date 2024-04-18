@@ -37,7 +37,7 @@ function Navbar() {
           <li className="dropdown-item">Trunk Exercises</li>
         </ul>
       </div> */}
-      <div className="search-bar ms-auto">
+      <div className="search-bar ms-auto d-none d-sm-block">
         <form className="d-flex" role="search">
           <input className="form-control mx-1 mx-md-2 mx-lg-5 fixed-width" type="search" placeholder="Search" aria-label="Search" />
           <button className="btn btn-outline-success" type="submit">Search</button>
