@@ -17,14 +17,14 @@ function HomePageCard({ exerciseType, exerciseUrl }) {
   }
   return (
     <>
-      <Card className="mx-auto my-5" style={{ width: "18rem" }}>
+      <Card className="mx-auto my-3" style={{ width: "18rem", backgroundColor: "black", color: "white" }}>
         <img src="..." className="card-img-top" alt="exercise" />
         <div className="card-body">
           <h5 className="card-title">{`${exerciseType} Exercises`}</h5>
           <p className="card-text">
             {`Click here to find ${exerciseType} dominant exercises for your program`}
           </p>
-          <button onClick={handleClick} className="btn btn-primary">
+          <button onClick={handleClick} className="btn btn-danger">
             💪 {`${exerciseType} Exercises`}
           </button>
         </div>

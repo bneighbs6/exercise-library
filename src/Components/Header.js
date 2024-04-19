@@ -3,7 +3,7 @@ import React from "react";
 function Header() {
   return (
     <>
-      <header className="bg-info text-center">
+      <header className="bg-danger text-center">
         <h1 className="">The Exercise Library</h1>
         <p className="">by Brett Neighbors</p>
       </header>
