@@ -53,3 +53,11 @@ function Layout() {
 }
 
 export default Layout; 
+
+
+/**
+ * START HERE 
+ * You just installed react-bootstrap and implemented it 
+ * into each component/web page
+ * NEXT STEP --- ?
+ */

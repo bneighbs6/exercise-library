@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import NavbarDropdownButton from "./NavbarDropdownButton";
+import { Nav, Navbar } from "react-bootstrap";
+// import { DropdownButton } from "react-bootstrap";
 /* 
 Navbar will be how user navigates web page
 It will have: 
@@ -12,39 +14,39 @@ It will have:
 - More items....
 */
 
-function Navbar() {
+function MyNavbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-info-subtle">
-      <Link className="navbar-brand mx-1 mx-md-2 mx-lg-5" to="/">Company Logo</Link>
-      <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/">Home</Link>
-      <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/about">About</Link>
-      <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/new-exercise">Create New Exercise</Link>
-              {/* DEBUG: Dropdown menu does not dropdown when pressed */}
-{/*       <div className="dropdown mx-3 mx-md-2 mx-lg-5">
-        <button
-          onClick={() => console.log("Dropdown Clicked")}
-          className="btn btn-dark dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false">
-          Exercise Library
-        </button>
-        <ul className="dropdown-menu dropdown-menu-dark">
-          <li className="dropdown-item">Push Exercises</li>
-          <li className="dropdown-item">Pull Exercises</li>
-          <li className="dropdown-item">Hip Dominant Exercises</li>
-          <li className="dropdown-item">Knee Dominant Exercises</li>
-          <li className="dropdown-item">Trunk Exercises</li>
-        </ul>
-      </div> */}
-      <div className="search-bar ms-auto d-none d-sm-block">
-        <form className="d-flex" role="search">
-          <input className="form-control mx-1 mx-md-2 mx-lg-5 fixed-width" type="search" placeholder="Search" aria-label="Search" />
-          <button className="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
+    <Nav variant="underline" defaultActiveKey={"/"}>
+      <Navbar expand="lg" className="bg-light">
+        <Link className="navbar-brand mx-1 mx-md-2 mx-lg-5" to="/">
+          Company Logo
+        </Link>
+        <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/">
+          Home
+        </Link>
+        <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/about">
+          About
+        </Link>
+        <Link className="navbar-item mx-1 mx-md-2 mx-lg-5" to="/new-exercise">
+          Create New Exercise
+        </Link>
+        <NavbarDropdownButton />
+        <div className="search-bar ms-auto d-none d-sm-block">
+          <form className="d-flex" role="search">
+            <input
+              className="form-control mx-1 mx-md-2 mx-lg-5 fixed-width"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button className="btn btn-outline-danger" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </Navbar>
+    </Nav>
   );
 }
 
-export default Navbar; 
+export default MyNavbar;
