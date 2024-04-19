@@ -17,12 +17,6 @@ The Layout function will be the layout for the entire web page
 It will include a Header, Navbar, main body (Routes), and a Footer
 */
 
-/* 
-START HERE MOTHAFUCKA
-You just got finished creating NewExercisePage w/ a pretty substandard form
-Make the form more professsional
-*/
-
 function Layout() {
   return (
     <>

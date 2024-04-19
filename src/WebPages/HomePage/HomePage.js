@@ -2,11 +2,6 @@ import React from "react";
 import HomePageCard from "./HomePageCards";
 import { Container, Row, Col } from "react-bootstrap";
 
-/* 
---- START HERE MOTHAFUCKA ---
-You need to set up what your home page will look like
-*/
-
 function HomePage() {
     return (
         <>
