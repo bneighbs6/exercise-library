@@ -5,7 +5,7 @@ import { Row, Col } from "react-bootstrap";
 function HipPage() {
   return (
     <>
-      <h1>Hip Dominant Exercises</h1>
+      <h1 className="text-center">Hip Exercises</h1>
       <Row>
         <Col>
           <HipPageCard />

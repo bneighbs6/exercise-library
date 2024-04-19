@@ -5,7 +5,7 @@ import { Row, Col } from "react-bootstrap";
 export default function KneePage() {
   return (
     <>
-      <h1>Knee Dominant Exercises</h1>
+      <h1 className="text-center">Knee Exercises</h1>
       <Row>
         <Col>
             <KneePageCard />

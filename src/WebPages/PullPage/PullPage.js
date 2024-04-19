@@ -5,7 +5,7 @@ import { Row, Col } from "react-bootstrap";
 function PullPage() {
   return (
     <>
-      <h1>Pull Exercises</h1>
+      <h1 className="text-center">Pull Exercises</h1>
       <Row>
         <Col>
           <PullPageCard />

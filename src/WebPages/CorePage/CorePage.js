@@ -4,7 +4,7 @@ import { Row, Col} from "react-bootstrap";
 function CorePage() {
     return (
         <>
-        <h1>Core Exercises</h1>
+        <h1 className="text-center">Core Exercises</h1>
         <Row>
             <Col>
                 <CorePageCard />
