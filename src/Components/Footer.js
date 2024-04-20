@@ -1,5 +1,7 @@
 import React from "react";
 
+// TODO: Take out the B.S. and put in lorem ipsum....
+
 function Footer() {
   return (
     <>

@@ -1,5 +1,7 @@
 import React from "react";
 
+// TODO: Change h1 name? 
+
 function Header() {
   return (
     <>
@@ -11,4 +13,4 @@ function Header() {
   );
 }
 
-export default Header; 
+export default Header;

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavbarDropdownButton from "./NavbarDropdownButton";
 import { Nav, Navbar } from "react-bootstrap";
-// import { DropdownButton } from "react-bootstrap";
+
 /* 
 Navbar will be how user navigates web page
 It will have: 

@@ -1,6 +1,9 @@
 import React from "react";
 import CorePageCard from "./CorePageCard"
 import { Row, Col} from "react-bootstrap";
+
+// TODO: 
+
 function CorePage() {
     return (
         <>
