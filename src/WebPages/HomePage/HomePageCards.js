@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
 /* 
 Card will display an image,
@@ -24,9 +24,9 @@ function HomePageCard({ exerciseType, exerciseUrl }) {
           <p className="card-text">
             {`Click here to find ${exerciseType} dominant exercises for your program`}
           </p>
-          <button onClick={handleClick} className="btn btn-danger">
+          <Button onClick={handleClick} variant="danger">
             💪 {`${exerciseType} Exercises`}
-          </button>
+          </Button>
         </div>
       </Card>
     </>
