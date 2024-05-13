@@ -1,6 +1,6 @@
 import React from "react";
 
-// TODO: Take out the B.S. and put in lorem ipsum....
+// TODO:
 
 function Footer() {
   return (
