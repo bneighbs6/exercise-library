@@ -6,7 +6,7 @@ const cors = require("cors");
 const morgan = require('morgan');
 
 
-const indexRouter = require('./exercises/exercises.router');
+const pushExercisesRouter = require('./exercises/pushExercises/pushExercises.router');
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/push-exercises', pushExercisesRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
