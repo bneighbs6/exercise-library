@@ -14,7 +14,7 @@ const sayHello = (req, res, next) => {
 const app = express();
 
 app.use(morgan("dev"));
-app.use(sayHello);
+app.get("/hello", sayHello);
 
 // Export Express app to be used in other files
 module.exports = app; 
