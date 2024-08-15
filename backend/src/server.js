@@ -1,6 +1,6 @@
 // Assign a port value for server to run on
 // In this case, its set to whatever PORT is in process.env, otherwise its defaulted to 5000
-const { PORT = 5000 } = process.env; 
+const { PORT = 8000 } = process.env; 
 
 // Require Express application, exported from app.js
 const app = require("./app");
