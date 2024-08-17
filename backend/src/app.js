@@ -1,6 +1,9 @@
 // Require Express package and assign to variable
 const express = require("express");
 
+// Require exercises router
+const exercisesRouter = require("./exercises/exercises.router");
+
 // Require Morgan package
 // Morgan will print useful info to terminal window on each request
 const morgan = require("morgan");
@@ -13,17 +16,6 @@ const viewExercises = (req, res, next) => {
     res.json({ data: exercises });
 }
 
-const viewExerciseById = (req, res, next) => {
-    const exerciseId = req.params.exerciseId; 
-    const foundExercise = exercises.find((exercise) => exercise.id === Number(exerciseId));
-
-    if (foundExercise) {
-        res.json({ data: foundExercise });
-    } else {
-        next(`Exercise ID not found: ${exerciseId}`);
-    }
-}
-
 // Express package exports a function, when invoked, a new Express app is created and assigned to a variable
 const app = express();
 
@@ -31,10 +23,10 @@ const app = express();
 app.use(morgan("dev"));
 
 // View exercise data in json format by Exercise Id
-app.use("/exercises/:exerciseId", viewExerciseById);
+// app.use("/exercises/:exerciseId", viewExerciseById);
 
 // View exercise data in json format
-app.use("/exercises", viewExercises);
+app.use("/exercises", exercisesRouter);
 
 // Route not found handler
 app.use((req, res, next) => {
