@@ -12,7 +12,7 @@ function create(req, res, next) {
     };
 
     exercises.push(newExercise);
-    res.json({ data: newExercise });
+    res.status(201).json({ data: newExercise });
 }
 
 function list(req, res, next) {
