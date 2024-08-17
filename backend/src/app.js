@@ -21,8 +21,20 @@ const saySomethingCool = (req, res, next) => {
 
 // Build a route using route parameters
 const sayGreeting = (req, res, next) => {
+    console.log(req.params);
     const greeting = req.params.greeting; 
     const content = `${greeting}!`;
+    res.send(content)
+}
+
+const useBothQueryAndParameter = (req, res, next) => {
+    console.log(req.params);
+    console.log(req.query);
+
+    const sport = req.params.sport;
+    const athlete = req.query.athlete; 
+
+    const content = athlete ? `${sport}, ${athlete}` : "You need to enter either a query or a parameter.";
     res.send(content)
 }
 
@@ -33,7 +45,12 @@ const app = express();
 app.use(morgan("dev"));
 app.get("/hello", sayHello);
 app.get("/cool", saySomethingCool);
+// Route using route parameters to edit what is sent on the response
 app.get("/say/:greeting", sayGreeting);
+
+// Route using both query and parameters
+// http://localhost:8000/both/football/?athlete=elliot will produce => football, elliot
+app.get("/both/:sport", useBothQueryAndParameter)
 
 // Export Express app to be used in other files
 module.exports = app; 
