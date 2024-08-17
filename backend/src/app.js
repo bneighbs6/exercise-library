@@ -63,6 +63,12 @@ app.get("/both/:sport", useBothQueryAndParameter);
 
 app.get("/exercise/:exercise", throwError);
 
+const exercises = require("./data/exercise-data");
+
+app.get("/exercises", (req, res, next) => {
+    res.json({ data: exercises });
+})
+
 // Route not found handler
 app.use((req, res, next) => {
     res.send(`The route ${req.path} does not exist.`)
