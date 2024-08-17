@@ -19,12 +19,21 @@ const saySomethingCool = (req, res, next) => {
     res.send(message);
 }
 
+// Build a route using route parameters
+const sayGreeting = (req, res, next) => {
+    const greeting = req.params.greeting; 
+    const content = `${greeting}!`;
+    res.send(content)
+}
+
 // Express package exports a function, when invoked, a new Express app is created and assigned to a variable
 const app = express();
 
+// Route set up 
 app.use(morgan("dev"));
 app.get("/hello", sayHello);
 app.get("/cool", saySomethingCool);
+app.get("/say/:greeting", sayGreeting);
 
 // Export Express app to be used in other files
 module.exports = app; 
