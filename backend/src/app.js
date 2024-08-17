@@ -42,9 +42,10 @@ app.use((req, res, next) => {
 });
 
 // Error handler
-app.use((err, req, res, next) => {
-    console.error(err);
-    res.send(err);
+app.use((error, req, res, next) => {
+    console.error(error);
+    const { status = 500, message = "Something went wrong" } = error;
+    res.status(status).json({ error: message });
 })
 
 // Export Express app to be used in other files

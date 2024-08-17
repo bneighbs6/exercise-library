@@ -2,6 +2,21 @@ const exercises = require("../data/exercise-data");
 
 let lastExerciseId = exercises.reduce((maxId, exercise) => Math.max(maxId, exercise.id), 0);
 
+// VALIDATION MIDDLEWARE FUNCTIONS
+
+// Validate that created exercise has category
+function hasCategory(req, res, next) {
+    const { data: { category } = {} } = req.body; 
+    if (category) {
+        return next(); 
+    } else {
+        next({
+            status: 400,
+            message: "A 'category' property is required."
+        });
+    }
+}
+
 function create(req, res, next) {
     const { data: { id, category, name } = {} } = req.body;
 
@@ -32,7 +47,7 @@ function read(req, res, next) {
 }
 
 module.exports = {
-    create,
+    create: [hasCategory, create],
     read,
     list, 
 }
