@@ -6,7 +6,7 @@ function list(req, res, next) {
 }
 
 // View exercise data in json format by Exercise Id; used with GET /exercises/:exerciseId
-const viewExerciseById = (req, res, next) => {
+function read(req, res, next) {
     const exerciseId = req.params.exerciseId; 
     const foundExercise = exercises.find((exercise) => exercise.id === Number(exerciseId));
 
@@ -18,5 +18,6 @@ const viewExerciseById = (req, res, next) => {
 }
 
 module.exports = {
+    read,
     list, 
 }
