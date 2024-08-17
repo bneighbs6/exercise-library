@@ -17,6 +17,18 @@ function hasCategory(req, res, next) {
     }
 }
 
+function hasName(req, res, next) {
+    const { data: { name } = {} } = req.body; 
+    if (name) {
+        return next(); 
+    } else {
+        next({
+            status: 400,
+            message: "A 'name' property is required."
+        });
+    }
+}
+
 function create(req, res, next) {
     const { data: { id, category, name } = {} } = req.body;
 
@@ -47,7 +59,7 @@ function read(req, res, next) {
 }
 
 module.exports = {
-    create: [hasCategory, create],
+    create: [hasCategory, hasName, create],
     read,
     list, 
 }
