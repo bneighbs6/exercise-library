@@ -28,6 +28,11 @@ app.use(morgan("dev"));
 // View exercise data in json format
 app.use("/exercises", exercisesRouter);
 
+// welcome route 
+app.use("/", (req, res, next) => {
+    res.send("Welcome to the backend homepage for exercise library")
+})
+
 // Route not found handler
 app.use((req, res, next) => {
     res.send(`The route ${req.path} does not exist.`)
