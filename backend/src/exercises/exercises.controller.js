@@ -29,6 +29,7 @@ function hasName(req, res, next) {
     }
 }
 
+// Creates a new exercise. Used with POST request
 function create(req, res, next) {
     const { data: { id, category, name } = {} } = req.body;
 
@@ -42,6 +43,7 @@ function create(req, res, next) {
     res.status(201).json({ data: newExercise });
 }
 
+// View full list of exercises
 function list(req, res, next) {
     res.json({ data: exercises });
 }
