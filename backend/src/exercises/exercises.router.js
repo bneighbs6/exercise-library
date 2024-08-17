@@ -1,11 +1,15 @@
 // Require router from express & assign to variable
 const router = require("express").Router(); 
 
+// Require method not allowed error handler
+const methodNotAllowed = require("../errors/methodNotAllowed");
+
 // Require controller to be used in this file & assign to variable
 const controller = require("./exercises.controller");
 
 router.route("/:exerciseId")
-.get(controller.read);
+.get(controller.read)
+.all(methodNotAllowed);
 
 router.route("/")
 .get(controller.list)

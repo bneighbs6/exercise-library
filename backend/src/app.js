@@ -4,17 +4,12 @@ const express = require("express");
 // Require exercises router
 const exercisesRouter = require("./exercises/exercises.router");
 
-// Require Morgan package
-// Morgan will print useful info to terminal window on each request
-const morgan = require("morgan");
+// Error Handlers
+const notFound = require("./errors/notFound");
+const errorHandler = require("./errors/errorHandler");
 
 // Exercise data from data folder
 const exercises = require("./data/exercise-data");
-
-// View exercise data in json format; used with GET /exercises
-const viewExercises = (req, res, next) => {
-    res.json({ data: exercises });
-}
 
 // Express package exports a function, when invoked, a new Express app is created and assigned to a variable
 const app = express();
@@ -22,31 +17,21 @@ const app = express();
 // express.json() creates a body property (req.body)
 app.use(express.json());
 
-// Route set up 
+// Require Morgan package
+// Morgan will print useful info to terminal window on each request
+const morgan = require("morgan");
 app.use(morgan("dev"));
 
-// View exercise data in json format by Exercise Id
-// app.use("/exercises/:exerciseId", viewExerciseById);
-
-// View exercise data in json format
+// Route set up 
 app.use("/exercises", exercisesRouter);
 
 // welcome route 
-app.use("/", (req, res, next) => {
-    res.send("Welcome to the backend homepage for exercise library")
-})
+// app.use("/", (req, res, next) => {
+//     res.send("Welcome to the backend homepage for exercise library")
+// })
 
-// Route not found handler
-app.use((req, res, next) => {
-    res.send(`The route ${req.path} does not exist.`)
-});
-
-// Error handler
-app.use((error, req, res, next) => {
-    console.error(error);
-    const { status = 500, message = "Something went wrong" } = error;
-    res.status(status).json({ error: message });
-})
+app.use(notFound)
+app.use(errorHandler)
 
 // Export Express app to be used in other files
 module.exports = app; 
