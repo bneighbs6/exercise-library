@@ -19,6 +19,9 @@ const viewExercises = (req, res, next) => {
 // Express package exports a function, when invoked, a new Express app is created and assigned to a variable
 const app = express();
 
+// express.json() creates a body property (req.body)
+app.use(express.json());
+
 // Route set up 
 app.use(morgan("dev"));
 
