@@ -38,6 +38,15 @@ const useBothQueryAndParameter = (req, res, next) => {
     res.send(content)
 }
 
+const throwError = (req, res, next) => {
+    const exercise = req.params.exercise; 
+    if (!exercise) {
+        next("No exercise parameter was given.")
+    } else {
+        res.send(`${exercise} is a great exercise`);
+    }
+}
+
 // Express package exports a function, when invoked, a new Express app is created and assigned to a variable
 const app = express();
 
@@ -50,7 +59,20 @@ app.get("/say/:greeting", sayGreeting);
 
 // Route using both query and parameters
 // http://localhost:8000/both/football/?athlete=elliot will produce => football, elliot
-app.get("/both/:sport", useBothQueryAndParameter)
+app.get("/both/:sport", useBothQueryAndParameter);
+
+app.get("/exercise/:exercise", throwError);
+
+// Route not found handler
+app.use((req, res, next) => {
+    res.send(`The route ${req.path} does not exist.`)
+});
+
+// Error handler
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.send(err);
+})
 
 // Export Express app to be used in other files
 module.exports = app; 
