@@ -5,30 +5,28 @@ let lastExerciseId = exercises.reduce((maxId, exercise) => Math.max(maxId, exerc
 // VALIDATION MIDDLEWARE FUNCTIONS
 
 // Validate that created exercise has category
-function bodyHasCategory(req, res, next) {
-    const { data: { category } = {} } = req.body; 
-    if (category) {
-        return next(); 
-    } else {
-        next({
-            status: 400,
-            message: "A 'category' property is required."
-        });
-    }
+function bodyHasData(propertyName) {
+    return function(req, res, next) {
+        const { data: {} } = req.body; 
+        if (data[propertyName]) {
+            return next(); 
+        }
+        next({ status: 400, message: `Must include a ${propertyName}` });
+    };
 }
 
 // Validate that created exercise has a name 
-function bodyHasName(req, res, next) {
-    const { data: { name } = {} } = req.body; 
-    if (name) {
-        return next(); 
-    } else {
-        next({
-            status: 400,
-            message: "A 'name' property is required."
-        });
-    }
-}
+// function bodyHasName(req, res, next) {
+//     const { data: { name } = {} } = req.body; 
+//     if (name) {
+//         return next(); 
+//     } else {
+//         next({
+//             status: 400,
+//             message: "A 'name' property is required."
+//         });
+//     }
+// }
 
 // Creates a new exercise. Used with POST request
 function create(req, res, next) {
@@ -62,7 +60,7 @@ function read(req, res, next) {
 }
 
 module.exports = {
-    create: [bodyHasCategory, bodyHasName, create],
+    create: [bodyHasData("category"), bodyHasData("name"), create],
     read,
     list, 
 }
