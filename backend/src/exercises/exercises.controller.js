@@ -5,7 +5,7 @@ let lastExerciseId = exercises.reduce((maxId, exercise) => Math.max(maxId, exerc
 // VALIDATION MIDDLEWARE FUNCTIONS
 
 // Validate that created exercise has category
-function hasCategory(req, res, next) {
+function bodyHasCategory(req, res, next) {
     const { data: { category } = {} } = req.body; 
     if (category) {
         return next(); 
@@ -17,7 +17,7 @@ function hasCategory(req, res, next) {
     }
 }
 
-function hasName(req, res, next) {
+function bodyHasName(req, res, next) {
     const { data: { name } = {} } = req.body; 
     if (name) {
         return next(); 
@@ -61,7 +61,7 @@ function read(req, res, next) {
 }
 
 module.exports = {
-    create: [hasCategory, hasName, create],
+    create: [bodyHasCategory, bodyHasName, create],
     read,
     list, 
 }
