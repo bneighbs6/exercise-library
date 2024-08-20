@@ -15,18 +15,19 @@ function bodyHasData(propertyName) {
     };
 }
 
-// Validate that created exercise has a name 
-// function bodyHasName(req, res, next) {
-//     const { data: { name } = {} } = req.body; 
-//     if (name) {
-//         return next(); 
-//     } else {
-//         next({
-//             status: 400,
-//             message: "A 'name' property is required."
-//         });
-//     }
-// }
+// Validates that the category is a valid value
+function categoryHasValidValue(req, res, next) {
+    const { data: { category } = {} } = req.body; 
+    const validCategory = ["push", "pull", "hip", "knee"];
+    if (validCategory.includes(category)) {
+        return next(); 
+    } else {
+        next({
+            status: 400,
+            message: `Value of 'category' property must be one of ${validCategory}. Received ${category}`,
+        });
+    }
+}
 
 // Creates a new exercise. Used with POST request
 function create(req, res, next) {
@@ -60,7 +61,7 @@ function read(req, res, next) {
 }
 
 module.exports = {
-    create: [bodyHasData("category"), bodyHasData("name"), create],
+    create: [bodyHasData("category"), bodyHasData("name"), categoryHasValidValue, create],
     read,
     list, 
 }
