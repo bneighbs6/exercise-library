@@ -49,5 +49,43 @@ describe("path /exercises", () => {
             expect(response.body.data).toEqual(expected);
         })
     });
+
+    // Test POST /exercises endpoint
+    describe("POST method", () => {
+        it("creates a new exercise and assigns id", async () => {
+            const newExercise = {
+                category: "pull",
+                name: "3 point row",
+            };
+            const response = await request(app)
+            .post("/exercises")
+            .set("Accept", "application/json")
+            .send({ data: newExercise });
+
+            expect(response.status).toBe(201);
+            expect(response.body.data).toEqual({
+                id: 5,
+                ...newExercise,
+            });
+        });
+
+        it("returns 400 if name is missing", async () => {
+            const response = await request(app)
+            .post("/exercises")
+            .set("Accept", "application/json")
+            .send({ data: { category: "push" } });
+
+            expect(response.status).toBe(400);
+        });
+
+        it("returns 400 if name is empty", async () => {
+            const response = await request(app)
+            .post("/exercises")
+            .set("Accept", "application/json")
+            .send({ data: { category: "push", name: "" } });
+
+            expect(response.status).toBe(400);
+        });
+    });
 });
 
