@@ -17,6 +17,7 @@ function bodyHasCategory(req, res, next) {
     }
 }
 
+// Validate that created exercise has a name 
 function bodyHasName(req, res, next) {
     const { data: { name } = {} } = req.body; 
     if (name) {
