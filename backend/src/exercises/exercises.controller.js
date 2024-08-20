@@ -2,7 +2,7 @@ const exercises = require("../data/exercise-data");
 
 let lastExerciseId = exercises.reduce((maxId, exercise) => Math.max(maxId, exercise.id), 0);
 
-// VALIDATION MIDDLEWARE FUNCTIONS
+/* VALIDATION MIDDLEWARE FUNCTIONS for CREATE */
 
 // Validate that created exercise has category
 function bodyHasData(propertyName) {
@@ -25,6 +25,21 @@ function categoryHasValidValue(req, res, next) {
         next({
             status: 400,
             message: `Value of 'category' property must be one of ${validCategory}. Received ${category}`,
+        });
+    }
+}
+
+/* VALIDATION MIDDLEWARE for READ */
+
+function exerciseExists(req, res, next) {
+    const { exerciseId } = req.params;
+    const foundExercise = exercises.find((exercise) => exercise.id === Number(exerciseId));
+    if (foundExercise) {
+        return next();
+    } else {
+        next({
+            status: 404,
+            message: `Exercise id not found: ${exerciseId}`,
         });
     }
 }
@@ -53,15 +68,11 @@ function read(req, res, next) {
     const exerciseId = req.params.exerciseId; 
     const foundExercise = exercises.find((exercise) => exercise.id === Number(exerciseId));
 
-    if (foundExercise) {
-        res.json({ data: foundExercise });
-    } else {
-        next(`Exercise ID not found: ${exerciseId}`);
-    }
+    res.json({ data: foundExercise });
 }
 
 module.exports = {
     create: [bodyHasData("category"), bodyHasData("name"), categoryHasValidValue, create],
-    read,
+    read: [exerciseExists, read],
     list, 
 }
