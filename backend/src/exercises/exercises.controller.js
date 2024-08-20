@@ -7,7 +7,7 @@ let lastExerciseId = exercises.reduce((maxId, exercise) => Math.max(maxId, exerc
 // Validate that created exercise has category
 function bodyHasData(propertyName) {
     return function(req, res, next) {
-        const { data: {} } = req.body; 
+        const { data = {} } = req.body; 
         if (data[propertyName]) {
             return next(); 
         }
