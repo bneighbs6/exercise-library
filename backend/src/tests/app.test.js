@@ -87,5 +87,31 @@ describe("path /exercises", () => {
             expect(response.status).toBe(400);
         });
     });
+
+    // Test PUT /:exerciseId endpoint
+    describe("PUT method", () => {
+        it("returns 200 when exercise is updated", async () => {
+            // Create new exercise and add to exercises array
+            const newExercise = {
+                category: "pull",
+                name: "3 point row",
+            };
+            exercises.push({ id: 5, ...newExercise });
+
+            // Update new exercise
+            const updatedExercise = {
+                name: "3 Point Row - Updated",
+                category: "Pull",
+            };
+
+            // Send PUT Request
+            const response = await request(app)
+            .put(`/exercises/${exercises[0].id}`)
+            .set("Accept", "application/json")
+            .send({ data: updatedExercise });
+            console.log(updatedExercise);
+            expect(response.status).toBe(200);
+        })
+    })
 });
 
