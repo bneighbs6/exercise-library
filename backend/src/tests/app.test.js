@@ -134,4 +134,31 @@ describe("path /:exerciseId", () => {
       expect(response.status).toBe(400);
     });
   });
+
+  // Test DELETE /:exerciseId endpoint
+  describe("DELETE method", () => {
+    beforeEach(() => {
+        exercises.splice(0, exercises.length); // Clears out exercises data
+        exercises.push({ id: 1, name: "Push Up", category: "push" }); // Add a new exercise
+      });
+
+    it("returns 204 when exercise is deleted", async () => {
+        const response = await request(app)
+        .delete(`/exercises/${exercises[0].id}`);
+
+        expect(response.status).toBe(204)
+    });
+
+    it("returns 404 after exercise is deleted", async () => {
+        const exerciseId = exercises[0].id; // Store the exercise ID before deletion
+      
+        const deletedResponse = await request(app)
+          .delete(`/exercises/${exerciseId}`);
+      
+        const response = await request(app)
+          .get(`/exercises/${exerciseId}`);
+      
+        expect(response.status).toBe(404);
+      });
+  });
 });
