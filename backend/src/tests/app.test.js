@@ -90,14 +90,20 @@ describe("path /exercises", () => {
 
     // Test PUT /:exerciseId endpoint
     describe("PUT method", () => {
-        it("returns 200 when exercise is updated", async () => {
-            // Create new exercise and add to exercises array
-            const newExercise = {
-                category: "pull",
-                name: "3 point row",
-            };
-            exercises.push({ id: 5, ...newExercise });
+        beforeEach(() => {
+            exercises.splice(0, exercises.length); // Clears out exercises data
+            exercises.push({ id: 1, name: "Push Up", category: "push" }); // Add a new exercise
+          });
 
+        it("returns 200 when exercise is updated", async () => {
+            // // Create new exercise and add to exercises array
+            // const newExercise = {
+            //     category: "pull",
+            //     name: "3 point row",
+            // };
+            // exercises.push({ id: 5, ...newExercise });
+
+            console.log(exercises[0])
             // Update new exercise
             const updatedExercise = {
                 name: "3 Point Row - Updated",
@@ -109,9 +115,30 @@ describe("path /exercises", () => {
             .put(`/exercises/${exercises[0].id}`)
             .set("Accept", "application/json")
             .send({ data: updatedExercise });
-            console.log(updatedExercise);
+
+            // Expect response status to be 200
             expect(response.status).toBe(200);
-        })
-    })
+        });
+
+        it("returns 404 if exerciseId does not exist", async () => {
+            // Send PUT request with an invalid id
+            const response = await request(app)
+            .put(`/exercises/1000001`)
+            .set("Accept", "application/json")
+            .send({ data: { category: "Pull", name: "Chin up" } });
+
+            // Expect response status to be 404
+            expect(response.status).toBe(404);
+        });
+
+        it("returns 400 if a body data is invalid", async () => {
+            const response = await request(app)
+            .put(`/exercises/${exercises[0].id}`)
+            .set("Accept", "application/json")
+            .send({ data: { category: "", name: "Squat" } });
+
+            expect(response.status).toBe(400);
+        });
+    });
 });
 
