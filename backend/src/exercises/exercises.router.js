@@ -9,6 +9,7 @@ const controller = require("./exercises.controller");
 
 router.route("/:exerciseId")
 .get(controller.read)
+.put(controller.update)
 .all(methodNotAllowed);
 
 router.route("/")
