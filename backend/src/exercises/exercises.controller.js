@@ -1,4 +1,4 @@
-const exercises = require("../data/exercise-data");
+const exercises = require("../static-test-data/exercise-data");
 
 let lastExerciseId = exercises.reduce((maxId, exercise) => Math.max(maxId, exercise.id), 0);
 
