@@ -34,8 +34,10 @@ function categoryHasValidValue(req, res, next) {
 function exerciseExists(req, res, next) {
     const { exerciseId } = req.params;
     const foundExercise = exercises.find((exercise) => exercise.id === Number(exerciseId));
+    // If foundExercise exists, store it in response locals object to be shared
     if (foundExercise) {
-        return next();
+        res.locals.exercise = foundExercise;
+        return next(); 
     } else {
         next({
             status: 404,
@@ -72,16 +74,15 @@ function read(req, res, next) {
 }
 
 function update(req, res) {
-    // Define exerciseId from request parameters
-    const { exerciseId } = req.params; 
-    // Define foundExercise by its id
-    const foundExercise = exercises.find((exercise) => exercise.id === Number(exerciseId));
+    // Define exercise from response locals object
+    const exercise = res.locals.exercise 
+    // Define request body 
     const { data: { category, name } = {} } = req.body; 
     // Update the exercise
-    foundExercise.category = category; 
-    foundExercise.name = name; 
+    exercise.category = category; 
+    exercise.name = name; 
     // Respond with the json of the updated exercise
-    res.json({ data: foundExercise });
+    res.json({ data: exercise });
 }
 
 function destroy(req, res) {
