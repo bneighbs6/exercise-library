@@ -71,16 +71,15 @@ function read(req, res, next) {
     res.json({ data });
 }
 
-function update(req, res) {
-    // Define exercise from response locals object
-    const exercise = res.locals.exercise 
-    // Define request body 
-    const { data: { category, name } = {} } = req.body; 
-    // Update the exercise
-    exercise.category = category; 
-    exercise.name = name; 
-    // Respond with the json of the updated exercise
-    res.json({ data: exercise });
+function update(req, res, next) {
+    const updatedExercise = {
+        ...req.body.data,
+        exercise_id: res.locals.exercise.exercise_id, // Always set to the existing exercise_id
+    };
+    kneeExercisesService
+    .update(updatedExercise)
+    .then((data) => res.json({ data }))
+    .catch(next);
 }
 
 function destroy(req, res) {
@@ -94,7 +93,7 @@ function destroy(req, res) {
 module.exports = {
     create: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, create],
     read: [exerciseExists, read],
-    update: [bodyHasData("exercise_category"), bodyHasData("exercise_name") , exerciseExists, update],
+    update: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, exerciseExists, update],
     list, 
     delete: [exerciseExists, destroy],
 }

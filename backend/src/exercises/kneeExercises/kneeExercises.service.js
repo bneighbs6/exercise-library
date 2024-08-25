@@ -13,6 +13,14 @@ function read(exerciseId) {
     return knex("knee_exercises").select("*").where({ exercise_id: exerciseId }).first();
 }
 
+// Updates a knee exercise by exercise_id
+function update(updatedExercise) {
+    return knex("knee_exercises")
+      .select("*")
+      .where({ exercise_id: updatedExercise.exercise_id })
+      .update(updatedExercise, "*");
+  }
+
 // Lists all knee exercises
 function list() {
     return knex("knee_exercises").select("*");
@@ -21,5 +29,6 @@ function list() {
 module.exports = {
     create,
     read,
+    update,
     list, 
 }
