@@ -1,4 +1,4 @@
-const knex = require("../db/connection");
+const knex = require("../../db/connection");
 
 // Lists a knee exercise by its exercise_id
 function read(exerciseId) {

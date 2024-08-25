@@ -2,7 +2,7 @@
 const express = require("express");
 
 // Require exercises router
-const kneeExercisesRouter = require("./exercises/kneeExercises.router");
+const kneeExercisesRouter = require("./exercises/kneeExercises/kneeExercises.router");
 
 // Error Handlers
 const notFound = require("./errors/notFound");

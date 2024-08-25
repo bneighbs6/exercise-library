@@ -1,4 +1,4 @@
-const kneeExercises = require("../db/exercise-data/kneeExercises");
+const kneeExercises = require("../../db/exercise-data/kneeExercises");
 
 const kneeExercisesService = require("./kneeExercises.service");
 
