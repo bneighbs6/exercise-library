@@ -34,18 +34,19 @@ function categoryHasValidValue(req, res, next) {
 /* VALIDATION MIDDLEWARE for READ */
 
 function exerciseExists(req, res, next) {
-    const { exerciseId } = req.params;
-    const foundExercise = kneeExercises.find((exercise) => exercise.id === Number(exerciseId));
-    // If foundExercise exists, store it in response locals object to be shared
-    if (foundExercise) {
-        res.locals.exercise = foundExercise;
-        return next(); 
-    } else {
+    kneeExercisesService
+    .read(req.params.exerciseId)
+    .then((exercise) => {
+        if (exercise) {
+            res.locals.exercise = exercise; 
+            return next();
+        }
         next({
-            status: 404,
-            message: `Exercise id not found: ${exerciseId}`,
+            status: 404, 
+            message: "Exercise cannot be found."
         });
-    }
+    })
+    .catch(next);
 }
 
 // Creates a new exercise. Used with POST request
@@ -72,10 +73,8 @@ function list(req, res, next) {
 
 // View exercise data in json format by Exercise Id; used with GET /exercises/:exerciseId
 function read(req, res, next) {
-    const exerciseId = req.params.exerciseId; 
-    const foundExercise = exercises.find((exercise) => exercise.id === Number(exerciseId));
-
-    res.json({ data: foundExercise });
+    const { exercise: data } = res.locals; 
+    res.json({ data });
 }
 
 function update(req, res) {
