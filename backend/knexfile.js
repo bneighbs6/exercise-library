@@ -3,11 +3,18 @@
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
+
+// Require dotenv library
+require("dotenv").config(); 
+
+// Define variable and store value of process.env.DATAUBASE_URL  
+const { DATABASE_URL } = process.env; 
+
 module.exports = {
 
   development: {
     client: 'postgresql',
-    connection: "",
+    connection: DATABASE_URL,
   },
 
   staging: {
