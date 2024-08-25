@@ -1,5 +1,13 @@
 const knex = require("../../db/connection");
 
+// Creates a new exercise
+function create(exercise) {
+    return knex("knee_exercises")
+    .insert(exercise)
+    .returning("*")
+    .then((createdExercise) => createdExercise[0]);
+}
+
 // Lists a knee exercise by its exercise_id
 function read(exerciseId) {
     return knex("knee_exercises").select("*").where({ exercise_id: exerciseId }).first();
@@ -11,6 +19,7 @@ function list() {
 }
  
 module.exports = {
+    create,
     read,
     list, 
 }

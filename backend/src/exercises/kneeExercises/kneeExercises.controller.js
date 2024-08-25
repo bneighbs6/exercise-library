@@ -19,9 +19,9 @@ function bodyHasData(propertyName) {
 
 // Validates that the category is a valid value
 function categoryHasValidValue(req, res, next) {
-    const { data: { category } = {} } = req.body; 
-    const validCategory = ["push", "pull", "hip", "knee"];
-    if (validCategory.includes(category)) {
+    const { data: { exercise_category } = {} } = req.body; 
+    const validCategory = ["Push", "Pull", "Hip", "Knee"];
+    if (validCategory.includes(exercise_category)) {
         return next(); 
     } else {
         next({
@@ -51,16 +51,10 @@ function exerciseExists(req, res, next) {
 
 // Creates a new exercise. Used with POST request
 function create(req, res, next) {
-    const { data: { id, category, name } = {} } = req.body;
-
-    const newExercise = {
-        id: ++lastExerciseId,
-        category, 
-        name,
-    };
-
-    kneeExercises.push(newExercise);
-    res.status(201).json({ data: newExercise });
+    kneeExercisesService
+    .create(req.body.data)
+    .then((data) => res.status(201).json({ data }))
+    .catch(next);
 }
 
 // View full list of exercises
@@ -98,9 +92,9 @@ function destroy(req, res) {
 }
 
 module.exports = {
-    create: [bodyHasData("category"), bodyHasData("name"), categoryHasValidValue, create],
+    create: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, create],
     read: [exerciseExists, read],
-    update: [bodyHasData("name"), bodyHasData("category") , exerciseExists, update],
+    update: [bodyHasData("exercise_category"), bodyHasData("exercise_name") , exerciseExists, update],
     list, 
     delete: [exerciseExists, destroy],
 }
