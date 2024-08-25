@@ -82,12 +82,11 @@ function update(req, res, next) {
     .catch(next);
 }
 
-function destroy(req, res) {
-    const { exerciseId } = req.params; 
-    const index = exercises.findIndex((exercise) => exercise.id === Number(exerciseId));
-    // splice() returns an array of deleted elements
-    const deletedExercise = exercises.splice(index, 1);
-    res.sendStatus(204);
+function destroy(req, res, next) {
+    kneeExercisesService
+    .delete(res.locals.exercise.exercise_id)
+    .then(() => res.sendStatus(204))
+    .catch(next);
 }
 
 module.exports = {

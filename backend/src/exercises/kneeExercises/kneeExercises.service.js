@@ -21,6 +21,11 @@ function update(updatedExercise) {
       .update(updatedExercise, "*");
   }
 
+// Deletes a knee exercise by its exercise id
+function destroy(exercise_id) {
+    return knex("knee_exercises").where({ exercise_id }).del();
+}
+
 // Lists all knee exercises
 function list() {
     return knex("knee_exercises").select("*");
@@ -30,5 +35,6 @@ module.exports = {
     create,
     read,
     update,
+    delete: destroy,
     list, 
 }
