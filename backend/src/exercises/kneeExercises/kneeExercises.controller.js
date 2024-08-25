@@ -43,7 +43,7 @@ function exerciseExists(req, res, next) {
         }
         next({
             status: 404, 
-            message: "Exercise cannot be found."
+            message: `Exercise cannot be found by id: ${req.params.exerciseId}`
         });
     })
     .catch(next);

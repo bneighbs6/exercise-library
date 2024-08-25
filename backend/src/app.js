@@ -26,9 +26,9 @@ app.use(morgan("dev"));
 app.use("/knee-exercises", kneeExercisesRouter);
 
 // welcome route 
-app.use("/", (req, res, next) => {
-    res.send("Welcome to the backend homepage for exercise library")
-})
+// app.use("/", (req, res, next) => {
+//     res.send("Welcome to the backend homepage for exercise library")
+// })
 
 app.use(notFound)
 app.use(errorHandler)
