@@ -5,7 +5,7 @@ const router = require("express").Router();
 const methodNotAllowed = require("../errors/methodNotAllowed");
 
 // Require controller to be used in this file & assign to variable
-const controller = require("./exercises.controller");
+const controller = require("./kneeExercises.controller");
 
 router.route("/:exerciseId")
 .get(controller.read)

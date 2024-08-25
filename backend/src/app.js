@@ -2,14 +2,14 @@
 const express = require("express");
 
 // Require exercises router
-const exercisesRouter = require("./exercises/exercises.router");
+const kneeExercisesRouter = require("./exercises/kneeExercises.router");
 
 // Error Handlers
 const notFound = require("./errors/notFound");
 const errorHandler = require("./errors/errorHandler");
 
-// Exercise data from data folder
-const exercises = require("./data/exercise-data");
+// Exercise data from db/exercise_data folder
+const kneeExercises = require("./db/exercise-data/kneeExercises");
 
 // Express package exports a function, when invoked, a new Express app is created and assigned to a variable
 const app = express();
@@ -23,12 +23,12 @@ const morgan = require("morgan");
 app.use(morgan("dev"));
 
 // Route set up 
-app.use("/exercises", exercisesRouter);
+app.use("/knee-exercises", kneeExercisesRouter);
 
 // welcome route 
-// app.use("/", (req, res, next) => {
-//     res.send("Welcome to the backend homepage for exercise library")
-// })
+app.use("/", (req, res, next) => {
+    res.send("Welcome to the backend homepage for exercise library")
+})
 
 app.use(notFound)
 app.use(errorHandler)

@@ -1,6 +1,8 @@
-const exercises = require("../static-test-data/exercise-data");
+const kneeExercises = require("../db/exercise-data/kneeExercises");
 
-let lastExerciseId = exercises.reduce((maxId, exercise) => Math.max(maxId, exercise.id), 0);
+const kneeExercisesService = require("./kneeExercises.service");
+
+let lastExerciseId = kneeExercises.reduce((maxId, exercise) => Math.max(maxId, exercise.id), 0);
 
 /* VALIDATION MIDDLEWARE FUNCTIONS for CREATE */
 
@@ -33,7 +35,7 @@ function categoryHasValidValue(req, res, next) {
 
 function exerciseExists(req, res, next) {
     const { exerciseId } = req.params;
-    const foundExercise = exercises.find((exercise) => exercise.id === Number(exerciseId));
+    const foundExercise = kneeExercises.find((exercise) => exercise.id === Number(exerciseId));
     // If foundExercise exists, store it in response locals object to be shared
     if (foundExercise) {
         res.locals.exercise = foundExercise;
@@ -56,13 +58,16 @@ function create(req, res, next) {
         name,
     };
 
-    exercises.push(newExercise);
+    kneeExercises.push(newExercise);
     res.status(201).json({ data: newExercise });
 }
 
 // View full list of exercises
 function list(req, res, next) {
-    res.json({ data: exercises });
+    kneeExercisesService
+    .list()
+    .then((data) => res.json({ data }))
+    .catch(next);
 }
 
 // View exercise data in json format by Exercise Id; used with GET /exercises/:exerciseId
