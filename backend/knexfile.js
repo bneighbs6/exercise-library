@@ -4,6 +4,9 @@
  * @type { Object.<string, import("knex").Knex.Config> }
  */
 
+// Require path
+const path = require("path");
+
 // Require dotenv library
 require("dotenv").config(); 
 
@@ -15,6 +18,9 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: DATABASE_URL,
+    migrations: {
+      directory: path.join(__dirname, "src", "db", "migrations"), // Defines where to store migration files
+    },
   },
 
   staging: {
