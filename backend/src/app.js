@@ -23,7 +23,9 @@ const morgan = require("morgan");
 app.use(morgan("dev"));
 
 // Route set up 
-app.use("/knee-exercises", kneeExercisesRouter);
+app.use("/knee-exercises", (req, res, next) => {
+    res.send("Knee exercises router works.")
+});
 
 // welcome route 
 app.use("/", (req, res, next) => {
