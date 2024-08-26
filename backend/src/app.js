@@ -23,12 +23,12 @@ const morgan = require("morgan");
 app.use(morgan("dev"));
 
 // Route set up 
-app.use("/knee-exercises", (req, res, next) => {
-    res.send("Knee exercises router works.")
-});
+app.use("/knee-exercises", kneeExercisesRouter);
 
 // welcome route 
-app.use("/", kneeExercisesRouter);
+app.use("/", (req, res, next) => {
+    res.send("Welcome to the backend homepage for exercise library")
+})
 
 app.use(notFound)
 app.use(errorHandler)
