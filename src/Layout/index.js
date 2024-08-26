@@ -9,7 +9,7 @@ import PullPage from "../WebPages/PullPage/PullPage";
 import HipPage from "../WebPages/HipPage/HipPage";
 import KneePage from "../WebPages/KneePage/KneePage";
 import CorePage from "../WebPages/CorePage/CorePage";
-import NewExercisePage from "../WebPages/NewExercisePage";
+import CreateExercisePage from "../WebPages/CreateExercisePage";
 import Footer from "../Components/Footer";
 
 /* 
@@ -36,7 +36,7 @@ function Layout() {
         <Route path="/hip-exercises" element={<HipPage />}></Route>
         <Route path="/knee-exercises" element={<KneePage />}></Route>
         <Route path="/core-exercises" element={<CorePage />}></Route>
-        <Route path="/new-exercise" element={<NewExercisePage />}></Route>
+        <Route path="/new-exercise" element={<CreateExercisePage />}></Route>
       </Routes>
 
       <div className="footer my-4">

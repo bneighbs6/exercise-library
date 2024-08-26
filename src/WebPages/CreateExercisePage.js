@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 
-function NewExercisePage() {
+function CreateExercisePage() {
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -59,4 +59,4 @@ function NewExercisePage() {
   );
 }
 
-export default NewExercisePage;
+export default CreateExercisePage;
