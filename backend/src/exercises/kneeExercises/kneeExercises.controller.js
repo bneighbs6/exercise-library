@@ -2,6 +2,8 @@ const kneeExercises = require("../../db/exercise-data/kneeExercises");
 
 const kneeExercisesService = require("./kneeExercises.service");
 
+const asyncErrorBoundary = require("../../errors/asyncErrorBoundary");
+
 let lastExerciseId = kneeExercises.reduce((maxId, exercise) => Math.max(maxId, exercise.id), 0);
 
 /* VALIDATION MIDDLEWARE FUNCTIONS for CREATE */
@@ -73,19 +75,15 @@ async function update(req, res, next) {
 }
 
 async function destroy(req, res, next) {
-    // kneeExercisesService
-    // .delete(res.locals.exercise.exercise_id)
-    // .then(() => res.sendStatus(204))
-    // .catch(next);
     const exercise = res.locals.exercise; 
     await kneeExercisesService.delete(exercise.exercise_id);
     res.sendStatus(204);
 }
 
 module.exports = {
-    create: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, create],
-    read: [exerciseExists, read],
-    update: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, exerciseExists, update],
-    list, 
-    delete: [exerciseExists, destroy],
+    create: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, asyncErrorBoundary(create)],
+    read: [asyncErrorBoundary(exerciseExists), read],
+    update: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, asyncErrorBoundary(exerciseExists), asyncErrorBoundary(update)],
+    list: asyncErrorBoundary(list), 
+    delete: [asyncErrorBoundary(exerciseExists), asyncErrorBoundary(destroy)],
 }
