@@ -33,36 +33,28 @@ function categoryHasValidValue(req, res, next) {
 
 /* VALIDATION MIDDLEWARE for READ */
 
-function exerciseExists(req, res, next) {
-    kneeExercisesService
-    .read(req.params.exerciseId)
-    .then((exercise) => {
-        if (exercise) {
-            res.locals.exercise = exercise; 
-            return next();
-        }
+async function exerciseExists(req, res, next) {
+    const exercise = await kneeExercisesService.read(req.params.exerciseId);
+    if (exercise) {
+        res.locals.exercise = exercise; 
+        return next(); 
+    } else {
         next({
-            status: 404, 
-            message: `Exercise cannot be found by id: ${req.params.exerciseId}`
+            status: 404, message: `Exercise ID ${exerciseId} cannot be found.`
         });
-    })
-    .catch(next);
+    }
 }
 
 // Creates a new exercise. Used with POST request
-function create(req, res, next) {
-    kneeExercisesService
-    .create(req.body.data)
-    .then((data) => res.status(201).json({ data }))
-    .catch(next);
+async function create(req, res, next) {
+    const data = await kneeExercisesService.create(req.body.data);
+    res.status(201).json({ data });
 }
 
 // View full list of exercises
-function list(req, res, next) {
-    kneeExercisesService
-    .list()
-    .then((data) => res.json({ data }))
-    .catch(next);
+async function list(req, res, next) {
+    const data = await kneeExercisesService.list();
+    res.json({ data });
 }
 
 // View exercise data in json format by Exercise Id; used with GET /exercises/:exerciseId
@@ -71,22 +63,23 @@ function read(req, res, next) {
     res.json({ data });
 }
 
-function update(req, res, next) {
+async function update(req, res, next) {
     const updatedExercise = {
         ...req.body.data,
         exercise_id: res.locals.exercise.exercise_id, // Always set to the existing exercise_id
     };
-    kneeExercisesService
-    .update(updatedExercise)
-    .then((data) => res.json({ data }))
-    .catch(next);
+    const data = await kneeExercisesService.update(updatedExercise);
+    res.json({ data });
 }
 
-function destroy(req, res, next) {
-    kneeExercisesService
-    .delete(res.locals.exercise.exercise_id)
-    .then(() => res.sendStatus(204))
-    .catch(next);
+async function destroy(req, res, next) {
+    // kneeExercisesService
+    // .delete(res.locals.exercise.exercise_id)
+    // .then(() => res.sendStatus(204))
+    // .catch(next);
+    const exercise = res.locals.exercise; 
+    await kneeExercisesService.delete(exercise.exercise_id);
+    res.sendStatus(204);
 }
 
 module.exports = {
