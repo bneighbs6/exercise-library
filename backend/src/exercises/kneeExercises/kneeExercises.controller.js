@@ -42,7 +42,7 @@ async function exerciseExists(req, res, next) {
         return next(); 
     } else {
         next({
-            status: 404, message: `Exercise ID ${exerciseId} cannot be found.`
+            status: 404, message: `Exercise ID ${req.params.exerciseId} cannot be found.`
         });
     }
 }
