@@ -1,18 +1,23 @@
 // Require Express package and assign to variable
 const express = require("express");
 
-// Require exercises router
-const kneeExercisesRouter = require("./exercises/kneeExercises/kneeExercises.router");
+const path = require("path");
+
+const cors = require("cors");
+
+require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
 
 // Error Handlers
 const notFound = require("./errors/notFound");
 const errorHandler = require("./errors/errorHandler");
 
-// Exercise data from db/exercise_data folder
-const kneeExercises = require("./db/exercise-data/kneeExercises");
+// Require exercises router
+const kneeExercisesRouter = require("./exercises/kneeExercises/kneeExercises.router");
 
 // Express package exports a function, when invoked, a new Express app is created and assigned to a variable
 const app = express();
+
+app.use(cors());
 
 // express.json() creates a body property (req.body)
 app.use(express.json());
