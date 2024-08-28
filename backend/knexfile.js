@@ -11,7 +11,9 @@ const path = require("path");
 require("dotenv").config(); 
 
 // Define variable and store value of process.env.DATAUBASE_URL  
-const { DATABASE_URL } = process.env; 
+const { 
+  DATABASE_URL = "postgresql://exercise-library-backend_owner:QmPth6yaMZi5@ep-dry-river-a6qmwg3k.us-west-2.aws.neon.tech/exercise-library-backend?sslmode=require" 
+} = process.env; 
 
 module.exports = {
 
