@@ -41,3 +41,16 @@ async function fetchJson(url, options, onCancel) {
       return Promise.resolve(onCancel);
     }
   }
+
+// Create an exercise and send data to the API 
+async function createExercise(exercise, signal) {
+    // Send a POST method to the API with exercise information
+    const url = `${API_BASE_URL}/new-exercise`;
+    const options = {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ data: exercise }),
+        signal,
+    }
+    return await fetchJson(url, options, {});
+}
