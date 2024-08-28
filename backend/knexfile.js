@@ -12,7 +12,7 @@ require("dotenv").config();
 
 // Define variable and store value of process.env.DATAUBASE_URL  
 const { 
-  DATABASE_URL = "postgresql://exercise-library-backend_owner:QmPth6yaMZi5@ep-dry-river-a6qmwg3k.us-west-2.aws.neon.tech/exercise-library-backend?sslmode=require" 
+  DATABASE_URL = "postgres://wkwnxfdu:blY73_-QpkyKuMVwnGwFWKAPmAE30tlP@bubble.db.elephantsql.com/wkwnxfdu" 
 } = process.env; 
 
 module.exports = {
