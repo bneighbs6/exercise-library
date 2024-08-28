@@ -1,15 +1,13 @@
-function asyncErrorBoundary(delegate, defaultStatus) {
-    return (request, response, next) => {
+function asyncErrorBoundary(delegate, defaultStatus = 500) {
+  return (req, res, next) => {
       Promise.resolve()
-        .then(() => delegate(request, response, next))
-        .catch((error = {}) => {
-          const { status = defaultStatus, message = error } = error;
-          next({
-            status,
-            message,
+          .then(() => delegate(req, res, next))
+          .catch((error = {}) => {
+              console.error('Error occurred:', error);
+              const { status = defaultStatus, message = 'An unexpected error occurred' } = error;
+              next({ status, message });
           });
-        });
-    };
-  }
-  
-  module.exports = asyncErrorBoundary;
+  };
+}
+
+module.exports = asyncErrorBoundary;

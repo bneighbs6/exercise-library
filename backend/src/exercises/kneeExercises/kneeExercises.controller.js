@@ -55,7 +55,10 @@ async function create(req, res, next) {
 
 // View full list of exercises
 async function list(req, res, next) {
+    console.log("Knee services controller, list() function started.")
     const data = await kneeExercisesService.list();
+    console.log(data);
+    console.log("List completed in controller.")
     res.json({ data });
 }
 
