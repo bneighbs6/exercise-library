@@ -9,4 +9,12 @@ describe("path /knee-exercises", () => {
     beforeEach(() => {
       kneeExercises.splice(0, kneeExercises.length); // Clears out the pastes data
     });
+
+    describe("GET Method", () => {
+        it("returns an array of knee exercises", async () => {
+            const response = await request(app).get("/knee-exercises");
+
+            expect(response.status).toBe(200);
+        })
+    })
   });
