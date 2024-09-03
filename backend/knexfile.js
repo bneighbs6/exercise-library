@@ -26,6 +26,17 @@ module.exports = {
     },
   },
 
+  test: {
+    client: 'postgresql',
+    connection: DATABASE_URL,
+    migrations: {
+      directory: path.join(__dirname, "src", "db", "migrations"), // Defines where to store migration files
+    },
+    seeds: {
+      directory: path.join(__dirname, "src", "db", "seeds"), // Defines where to store seed files
+    },
+  },
+
   staging: {
     client: 'postgresql',
     connection: {
