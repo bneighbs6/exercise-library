@@ -7,6 +7,6 @@ Example, if env is set to "development", then config will be set to the developm
 const config = require("../../knexfile")[env];
 
 // Initializes knex instance 
-const knex = require("knex").config(); 
+const knex = require("knex")(config); 
 
 module.exports = knex; 
