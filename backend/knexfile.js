@@ -14,7 +14,7 @@ module.exports = {
     migrations: {
       directory: path.join(__dirname, "src", "db", "migrations"), // Tells knex where to store migration files
     },
-    seed: {
+    seeds: {
       directory: path.join(__dirname, "src", "db", "seeds"), // Tells knex where to store seeds files
     }
   },
