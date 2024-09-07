@@ -1,6 +1,9 @@
 // Requires dotenv package and loads .env file
 require("dotenv").config();
 
+// Requires path package & store in path variable
+const path = require("path");
+
 const { DATABASE_URL } = process.env; 
 
 module.exports = {
@@ -8,6 +11,9 @@ module.exports = {
   development: {
     client: 'pg',
     connection: DATABASE_URL,
+    migrations: {
+      directory: path.join(__dirname, "src", "db", "migrations"), // Tells knex where to store migration files
+    }
   },
 
   staging: {
