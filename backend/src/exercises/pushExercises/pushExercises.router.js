@@ -2,6 +2,8 @@ const router = require("express").Router();
 
 const methodNotAllowed = require("../../errors/methodNotAllowed");
 
+const controller = require("./pushExercises.controller");
+
 // TODO: code necessary routes
 
 router.route("/:exerciseId")
@@ -11,9 +13,8 @@ router.route("/:exerciseId")
 .all(methodNotAllowed);
 
 router.route("/")
-.get((req, res, next) => {
-    res.send("Welcome to /push-exercises route");
-})
+.get(controller.list)
+.post(controller.create)
 .all(methodNotAllowed);
 
 module.exports = router; 
