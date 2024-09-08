@@ -13,6 +13,7 @@ const errorHandler = require("./errors/errorHandler");
 
 // Require exercises router
 const kneeExercisesRouter = require("./exercises/kneeExercises/kneeExercises.router");
+const pushExercisesRouter = require("./exercises/pushExercises/pushExercises.router");
 
 // Express package exports a function, when invoked, a new Express app is created and assigned to a variable
 const app = express();
@@ -29,6 +30,8 @@ app.use(morgan("dev"));
 
 // Route set up 
 app.use("/knee-exercises", kneeExercisesRouter);
+
+app.use("/push-exercises", pushExercisesRouter);
 
 // welcome route 
 app.use("/", (req, res, next) => {
