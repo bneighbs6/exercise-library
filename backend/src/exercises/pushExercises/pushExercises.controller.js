@@ -6,10 +6,9 @@ const asyncErrorBoundary = require("../../errors/asyncErrorBoundary");
 
 let lastExerciseId = pushExercises.reduce((maxId, exercise) => Math.max(maxId, exercise.id), 0);
 
-function list(req, res, next) {
-    service.list()
-    .then((data) => res.json({ data }))
-    .catch(next);
+async function list(req, res, next) {
+    const data = await service.list(); 
+    res.json({ data });
 }
 
 function bodyHasData(propertyName) {
@@ -27,17 +26,13 @@ function bodyHasData(propertyName) {
 
 /* VALIDATION MIDDLEWARE for READ */
 
-function exerciseExists(req, res, next) {
-    service
-    .read(req.params.exerciseId)
-    .then((exercise) => {
-        if (exercise) {
-            res.locals.exercise = exercise; 
-            return next();
-        }
-        next({ status: 404, message: `Exercise cannot be found`});
-    })
-    .catch(next);
+async function exerciseExists(req, res, next) {
+    const exercise = await service.read(req.params.exerciseId);
+    if (exercise) {
+        res.locals.exercise = exercise; 
+        return next(); 
+    }
+    next({ status: 404, message: "Exercise cannot be found."})
 }
 
 // Validates that the category is a valid value
@@ -54,10 +49,9 @@ function categoryHasValidValue(req, res, next) {
     }
 }
 
-function create(req, res, next) {
-    service.create(req.body.data)
-    .then((data) => res.status(201).json({ data }))
-    .catch(next);
+async function create(req, res, next) {
+    const data = await service.create(req.body.data);
+    res.status(201).json({ data })
 }
 
 function read(req, res, next) {
@@ -65,28 +59,25 @@ function read(req, res, next) {
     res.json({ data });
 }
 
-function update(req, res, next) {
+async function update(req, res, next) {
     const updatedExercise = {
         ...req.body.data,
         exercise_id: res.locals.exercise.exercise_id,
     };
-    service
-    .update(updatedExercise)
-    .then((data) => res.json({ data }))
-    .catch(next);
+    const data = await service.update(updatedExercise);
+    res.json({ data });
 }
 
-function destroy(req, res, next) {
-    service
-    .delete(res.locals.exercise.exercise_id)
-    .then(() => res.status(204))
-    .catch(next);
+async function destroy(req, res, next) {
+    const { exercise } = res.locals; 
+    await service.delete(exercise.exercise_id);
+    res.sendStatus(204);
 }
 
 module.exports = {
-    create: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, create],
-    read: [exerciseExists, read],
-    update: [exerciseExists, bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, update],
-    delete: [exerciseExists, destroy],
-    list, 
+    create: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, asyncErrorBoundary(create)],
+    read: [asyncErrorBoundary(exerciseExists), read],
+    update: [asyncErrorBoundary(exerciseExists), bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, asyncErrorBoundary(update)],
+    delete: [asyncErrorBoundary(exerciseExists), asyncErrorBoundary(destroy)],
+    list: asyncErrorBoundary(list),
 }
