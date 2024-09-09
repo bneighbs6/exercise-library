@@ -1,15 +1,8 @@
-const pushExercises = require("../../db/exercise-data/pushExercises");
-
 const service = require("./pushExercises.service");
 
 const asyncErrorBoundary = require("../../errors/asyncErrorBoundary");
 
-let lastExerciseId = pushExercises.reduce((maxId, exercise) => Math.max(maxId, exercise.id), 0);
-
-async function list(req, res, next) {
-    const data = await service.list(); 
-    res.json({ data });
-}
+/* VALIDATION MIDDLEWARE */
 
 function bodyHasData(propertyName) {
     return function (req, res, next) {
@@ -24,8 +17,7 @@ function bodyHasData(propertyName) {
     }
 }
 
-/* VALIDATION MIDDLEWARE for READ */
-
+// Validates that exercise exists by its id
 async function exerciseExists(req, res, next) {
   const exercise = await service.read(req.params.exerciseId);
   if (exercise) {
@@ -52,6 +44,8 @@ function categoryHasValidValue(req, res, next) {
     }
 }
 
+/* CRUDL Functions */
+
 async function create(req, res, next) {
     const data = await service.create(req.body.data);
     res.status(201).json({ data })
@@ -75,6 +69,11 @@ async function destroy(req, res, next) {
     const { exercise } = res.locals; 
     await service.delete(exercise.exercise_id);
     res.sendStatus(204);
+}
+
+async function list(req, res, next) {
+    const data = await service.list(); 
+    res.json({ data });
 }
 
 module.exports = {
