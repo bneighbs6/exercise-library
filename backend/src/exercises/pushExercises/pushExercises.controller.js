@@ -1,5 +1,3 @@
-// TODO: Code all necesssary controller functions including middleware
-
 const pushExercises = require("../../db/exercise-data/pushExercises");
 
 const asyncErrorBoundary = require("../../errors/asyncErrorBoundary");
@@ -23,6 +21,20 @@ function bodyHasData(propertyName) {
     }
 }
 
+/* VALIDATION MIDDLEWARE for READ */
+
+function exerciseExists(req, res, next) {
+    const { exerciseId } = req.params; 
+    const foundExercise = pushExercises.find((exercise) => exercise.id === Number(exerciseId));
+    if (foundExercise) {
+        return next();
+    }
+    next({
+        status: 404, 
+        message: `Exercise Id not found: ${exerciseId}`,
+    })
+}
+
 function create(req, res, next) {
     const { data: { exercise_category, exercise_name } = {} } = req.body; 
     const newExercise = {
@@ -34,7 +46,14 @@ function create(req, res, next) {
     res.status(201).json({ data: newExercise });
 }
 
+function read(req, res, next) {
+    const { exerciseId } = req.params;
+    const foundExercise = pushExercises.find((exercise) => exercise.id === Number(exerciseId));
+    res.json({ data: foundExercise });
+}
+
 module.exports = {
     create: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), create],
+    read: [exerciseExists, read],
     list, 
 }

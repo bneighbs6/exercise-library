@@ -7,9 +7,7 @@ const controller = require("./pushExercises.controller");
 // TODO: code necessary routes
 
 router.route("/:exerciseId")
-.get((req, res, next) => {
-    res.send("You need to set up /:exerciseId route");
-})
+.get(controller.read)
 .all(methodNotAllowed);
 
 router.route("/")
