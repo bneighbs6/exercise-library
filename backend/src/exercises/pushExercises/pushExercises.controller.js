@@ -27,6 +27,8 @@ function exerciseExists(req, res, next) {
     const { exerciseId } = req.params; 
     const foundExercise = pushExercises.find((exercise) => exercise.id === Number(exerciseId));
     if (foundExercise) {
+        // setting res.locals.exercise to the foundExercise to be used only during this req-res cycle
+        res.locals.exercise = foundExercise;
         return next();
     }
     next({
@@ -53,14 +55,12 @@ function read(req, res, next) {
 }
 
 function update(req, res, next) {
-  const { exerciseId } = req.params;
-  const foundExercise = pushExercises.find(
-    (exercise) => exercise.id === Number(exerciseId)
-  );
+    // Using the res.locals of the particular req-res cycle
+  const exercise = res.locals.exercise; 
   const { data: { exercise_category, exercise_name } = {} } = req.body;
 
-  foundExercise.exercise_category = exercise_category;
-  foundExercise.exercise_name = exercise_name;
+  exercise.exercise_category = exercise_category;
+  exercise.exercise_name = exercise_name;
 
   res.json({ data: foundExercise });
 }
