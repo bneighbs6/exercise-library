@@ -28,17 +28,16 @@ function bodyHasData(propertyName) {
 /* VALIDATION MIDDLEWARE for READ */
 
 function exerciseExists(req, res, next) {
-    const { exerciseId } = req.params; 
-    const foundExercise = pushExercises.find((exercise) => exercise.id === Number(exerciseId));
-    if (foundExercise) {
-        // setting res.locals.exercise to the foundExercise to be used only during this req-res cycle
-        res.locals.exercise = foundExercise;
-        return next();
-    }
-    next({
-        status: 404, 
-        message: `Exercise Id not found: ${exerciseId}`,
+    service
+    .read(req.params.exerciseId)
+    .then((exercise) => {
+        if (exercise) {
+            res.locals.exercise = exercise; 
+            return next();
+        }
+        next({ status: 404, message: `Exercise cannot be found`});
     })
+    .catch(next);
 }
 
 function create(req, res, next) {
@@ -53,9 +52,8 @@ function create(req, res, next) {
 }
 
 function read(req, res, next) {
-    const { exerciseId } = req.params;
-    const foundExercise = pushExercises.find((exercise) => exercise.id === Number(exerciseId));
-    res.json({ data: foundExercise });
+    const { exercise: data } = res.locals; 
+    res.json({ data });
 }
 
 function update(req, res, next) {

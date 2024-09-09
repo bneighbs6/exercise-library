@@ -4,7 +4,7 @@ const methodNotAllowed = require("../../errors/methodNotAllowed");
 
 const controller = require("./pushExercises.controller");
 
-router.route("/:exerciseId")
+router.route("/:exerciseId([0-9])+")
 .get(controller.read)
 .put(controller.update)
 .delete(controller.delete)
