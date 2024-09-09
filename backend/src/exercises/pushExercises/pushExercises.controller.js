@@ -19,7 +19,7 @@ function bodyHasData(propertyName) {
         }
         next({
             status: 400, 
-            message: "A 'name' property is required.",
+            message: `A ${propertyName} is required.`
         });
     }
 }
@@ -27,12 +27,15 @@ function bodyHasData(propertyName) {
 /* VALIDATION MIDDLEWARE for READ */
 
 async function exerciseExists(req, res, next) {
-    const exercise = await service.read(req.params.exerciseId);
-    if (exercise) {
-        res.locals.exercise = exercise; 
-        return next(); 
-    }
-    next({ status: 404, message: "Exercise cannot be found."})
+  const exercise = await service.read(req.params.exerciseId);
+  if (exercise) {
+    res.locals.exercise = exercise;
+    return next();
+  }
+  next({
+    status: 404,
+    message: `Exercise ID ${req.params.exerciseId} cannot be found.`,
+  });
 }
 
 // Validates that the category is a valid value
