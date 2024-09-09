@@ -52,8 +52,22 @@ function read(req, res, next) {
     res.json({ data: foundExercise });
 }
 
+function update(req, res, next) {
+  const { exerciseId } = req.params;
+  const foundExercise = pushExercises.find(
+    (exercise) => exercise.id === Number(exerciseId)
+  );
+  const { data: { exercise_category, exercise_name } = {} } = req.body;
+
+  foundExercise.exercise_category = exercise_category;
+  foundExercise.exercise_name = exercise_name;
+
+  res.json({ data: foundExercise });
+}
+
 module.exports = {
     create: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), create],
     read: [exerciseExists, read],
+    update: [exerciseExists, bodyHasData("exercise_category"), bodyHasData("exercise_name"), update],
     list, 
 }
