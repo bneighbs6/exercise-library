@@ -40,15 +40,24 @@ function exerciseExists(req, res, next) {
     .catch(next);
 }
 
+// Validates that the category is a valid value
+function categoryHasValidValue(req, res, next) {
+    const { data: { exercise_category } = {} } = req.body; 
+    const validCategory = ["Push", "Pull", "Hip", "Knee"];
+    if (validCategory.includes(exercise_category)) {
+        return next(); 
+    } else {
+        next({
+            status: 400,
+            message: `Value of 'category' property must be one of ${validCategory}. Received ${category}`,
+        });
+    }
+}
+
 function create(req, res, next) {
-    const { data: { exercise_category, exercise_name } = {} } = req.body; 
-    const newExercise = {
-        id: ++lastExerciseId,
-        exercise_category,
-        exercise_name,
-    };
-    pushExercises.push(newExercise);
-    res.status(201).json({ data: newExercise });
+    service.create(req.body.data)
+    .then((data) => res.status(201).json({ data }))
+    .catch(next);
 }
 
 function read(req, res, next) {
@@ -57,28 +66,27 @@ function read(req, res, next) {
 }
 
 function update(req, res, next) {
-    // Using the res.locals of the particular req-res cycle
-  const exercise = res.locals.exercise; 
-  const { data: { exercise_category, exercise_name } = {} } = req.body;
-
-  exercise.exercise_category = exercise_category;
-  exercise.exercise_name = exercise_name;
-
-  res.json({ data: foundExercise });
+    const updatedExercise = {
+        ...req.body.data,
+        exercise_id: res.locals.exercise.exercise_id,
+    };
+    service
+    .update(updatedExercise)
+    .then((data) => res.json({ data }))
+    .catch(next);
 }
 
 function destroy(req, res, next) {
-    const { exerciseId } = req.params; 
-    const index = pushExercises.find((exercise) => exercise.id === Number(exerciseId));
-
-    const deletedExercise = pushExercises.splice(index, 1);
-    res.sendStatus(204);
+    service
+    .delete(res.locals.exercise.exercise_id)
+    .then(() => res.status(204))
+    .catch(next);
 }
 
 module.exports = {
-    create: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), create],
+    create: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, create],
     read: [exerciseExists, read],
-    update: [exerciseExists, bodyHasData("exercise_category"), bodyHasData("exercise_name"), update],
+    update: [exerciseExists, bodyHasData("exercise_category"), bodyHasData("exercise_name"), categoryHasValidValue, update],
     delete: [exerciseExists, destroy],
     list, 
 }
