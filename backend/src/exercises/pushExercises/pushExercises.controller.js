@@ -1,11 +1,15 @@
 const pushExercises = require("../../db/exercise-data/pushExercises");
 
+const service = require("./pushExercises.service");
+
 const asyncErrorBoundary = require("../../errors/asyncErrorBoundary");
 
 let lastExerciseId = pushExercises.reduce((maxId, exercise) => Math.max(maxId, exercise.id), 0);
 
-function list(req, res) {
-    res.json({ data: pushExercises });
+function list(req, res, next) {
+    service.list()
+    .then((data) => res.json({ data }))
+    .catch(next);
 }
 
 function bodyHasData(propertyName) {
