@@ -65,9 +65,18 @@ function update(req, res, next) {
   res.json({ data: foundExercise });
 }
 
+function destroy(req, res, next) {
+    const { exerciseId } = req.params; 
+    const index = pushExercises.find((exercise) => exercise.id === Number(exerciseId));
+
+    const deletedExercise = pushExercises.splice(index, 1);
+    res.sendStatus(204);
+}
+
 module.exports = {
     create: [bodyHasData("exercise_category"), bodyHasData("exercise_name"), create],
     read: [exerciseExists, read],
     update: [exerciseExists, bodyHasData("exercise_category"), bodyHasData("exercise_name"), update],
+    delete: [exerciseExists, destroy],
     list, 
 }

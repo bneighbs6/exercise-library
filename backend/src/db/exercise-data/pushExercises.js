@@ -1,5 +1,6 @@
 module.exports = [
     {
+        id: 1, 
         exercise_name: "Push Ups"
     }, 
     {
