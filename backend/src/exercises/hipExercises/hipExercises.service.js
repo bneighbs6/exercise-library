@@ -1,3 +1,5 @@
+const knex = require("../../db/connection");
+
 // Creates new exercise
 function create(exercise) {
   return knex("hip_exercises")
