@@ -1,5 +1,3 @@
-// TODO: Create middleware and CRUDL fx
-
 const service = require("./trunkExercisees.service");
 
 const asyncErrorBoundary = require("../../errors/asyncErrorBoundary");

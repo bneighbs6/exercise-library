@@ -16,6 +16,7 @@ const kneeExercisesRouter = require("./exercises/kneeExercises/kneeExercises.rou
 const pushExercisesRouter = require("./exercises/pushExercises/pushExercises.router");
 const pullExercisesRouter = require("./exercises/pullExercises/pullExercises.router");
 const hipExercisesRouter = require("./exercises/hipExercises/hipExercises.router");
+const trunkExercisesRouter = require("./exercises/trunkExercises/trunkExercises.router");
 
 // Express package exports a function, when invoked, a new Express app is created and assigned to a variable
 const app = express();
@@ -38,6 +39,8 @@ app.use("/push-exercises", pushExercisesRouter);
 app.use("/pull-exercises", pullExercisesRouter);
 
 app.use("/hip-exercises", hipExercisesRouter);
+
+app.use("/trunk-exercises", trunkExercisesRouter);
 
 // welcome route 
 app.use("/", (req, res, next) => {
