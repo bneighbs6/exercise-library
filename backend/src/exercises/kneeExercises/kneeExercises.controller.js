@@ -1,6 +1,4 @@
-const kneeExercises = require("../../db/exercise-data/kneeExercises");
-
-const kneeExercisesService = require("./kneeExercises.service");
+const service = require("./kneeExercises.service");
 
 const asyncErrorBoundary = require("../../errors/asyncErrorBoundary");
 
@@ -20,7 +18,7 @@ function bodyHasData(propertyName) {
 // Validates that the category is a valid value
 function categoryHasValidValue(req, res, next) {
   const { data: { exercise_category } = {} } = req.body;
-  const validCategory = ["Push", "Pull", "Hip", "Knee"];
+  const validCategory = ["Push", "Pull", "Hip", "Knee", "Trunk"];
   if (validCategory.includes(exercise_category)) {
     return next();
   } else {
@@ -32,7 +30,7 @@ function categoryHasValidValue(req, res, next) {
 }
 
 async function exerciseExists(req, res, next) {
-  const exercise = await kneeExercisesService.read(req.params.exerciseId);
+  const exercise = await service.read(req.params.exerciseId);
   if (exercise) {
     res.locals.exercise = exercise;
     return next();
@@ -48,7 +46,7 @@ async function exerciseExists(req, res, next) {
 
 // Creates a new exercise. Used with POST request
 async function create(req, res, next) {
-  const data = await kneeExercisesService.create(req.body.data);
+  const data = await service.create(req.body.data);
   res.status(201).json({ data });
 }
 
@@ -63,20 +61,20 @@ async function update(req, res, next) {
     ...req.body.data,
     exercise_id: res.locals.exercise.exercise_id, // Always set to the existing exercise_id
   };
-  const data = await kneeExercisesService.update(updatedExercise);
+  const data = await service.update(updatedExercise);
   res.json({ data });
 }
 
 async function destroy(req, res, next) {
   const exercise = res.locals.exercise;
-  await kneeExercisesService.delete(exercise.exercise_id);
+  await service.delete(exercise.exercise_id);
   res.sendStatus(204);
 }
 
 // View full list of exercises
 async function list(req, res, next) {
   console.log("Knee services controller, list() function started.");
-  const data = await kneeExercisesService.list();
+  const data = await service.list();
   console.log(data);
   console.log("List completed in controller.");
   res.json({ data });
