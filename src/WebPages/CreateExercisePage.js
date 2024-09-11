@@ -36,7 +36,8 @@ function CreateExercisePage() {
   }
 
   function handleCancel(e) {
-    console.log("Form cancelled.");
+    setExercise({ ...initialFormState });
+    console.log("Cancel button clicked.")
     return navigate("/new-exercise");
   }
 
