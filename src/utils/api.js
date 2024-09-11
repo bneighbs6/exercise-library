@@ -46,13 +46,33 @@ async function fetchJson(url, options, onCancel) {
   }
 }
 
-// TODO: Make the url be the correct url for either knee-, hip-, push-, pull-, or trunk-exercises
-
 // Create an exercise and send data to the API
 export default async function createExercise(exercise, signal) {
-console.log("API_BASE_URL:", API_BASE_URL);
-const url = `${API_BASE_URL}/knee-exercises`;
-console.log("Constructed URL:", url);
+// console.log("API_BASE_URL:", API_BASE_URL);
+
+// Extracts exercise_category from the exercise object argument
+const exerciseCategory = exercise.exercise_category;
+// console.log("exercise_category:", exerciseCategory);
+
+// Maps where the url suffix will land depending on the category
+const categoryToUrlSuffix = {
+  Knee: "/knee-exercises",
+  Hip: "/hip-exercises",
+  Push: "/push-exercises",
+  Pull: "/pull-exercises",
+  Trunk: "/trunk-exercises",
+};
+
+// Sets the url suffix to the corresponding category the user entered
+const urlSuffix = categoryToUrlSuffix[exerciseCategory];
+
+if(!urlSuffix) {
+  throw new Error(`Invalid category: ${exerciseCategory}`);
+}
+
+const url = `${API_BASE_URL}${urlSuffix}`;
+// console.log("Constructed URL:", url);
+
   // Send a POST method to the API with reservation info
   const options = {
     method: "POST",
