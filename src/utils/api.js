@@ -45,7 +45,7 @@ async function fetchJson(url, options, onCancel) {
   }
 }
 
-// TODO: SET UP API_BASE_URL from deployed databases url :)
+// TODO: Make the url be the correct url for either knee-, hip-, push-, pull-, or trunk-exercises
 
 // Create an exercise and send data to the API
 export default async function createExercise(exercise, signal) {

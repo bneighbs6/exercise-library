@@ -14,6 +14,14 @@ function CreateExercisePage() {
   const [error, setError] = useState(null);
   const [exercise, setExercise] = useState({ ...initialFormState });
 
+  function handleExerciseNameChange(e) {
+    setExercise({ ...exercise, exercise_name: e.target.value });
+  }
+
+  function handleExerciseCategoryChange(e) {
+    setExercise({ ...exercise, exercise_category: e.target.value });
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     const abortController = new AbortController(); 
@@ -49,16 +57,20 @@ function CreateExercisePage() {
                   id="exerciseNameInput"
                   name="exerciseName"
                   placeholder="Exercise name here"
+                  value={exercise.exercise_name}
+                  onChange={handleExerciseNameChange}
                 />
               </div>
-              <div className="form-group" id="exercisePattern">
-                <label htmlFor="exercisePatternInput">Exercise Pattern</label>
+              <div className="form-group" id="exerciseCategory">
+                <label htmlFor="exerciseCategoryInput">Exercise Pattern</label>
                 <input
                   type="text"
                   className="form-control text-center"
                   id="exercisePatternInput"
                   name="exerciseType"
                   placeholder="Push, Pull, Hip, Knee, or Core"
+                  value={exercise.exercise_category}
+                  onChange={handleExerciseCategoryChange}
                 />
               </div>
               <Button className="btn-success" onClick={handleSubmit}>
