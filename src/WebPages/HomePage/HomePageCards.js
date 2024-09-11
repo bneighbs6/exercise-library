@@ -23,11 +23,11 @@ function HomePageCard({ exerciseType, exerciseUrl }) {
       >
         {/* <img src="..." className="card-img-top" alt="exercise" /> */}
         {/* TODO: Install CORS so we can use my youtube videos */}
-        <div class="embed-responsive embed-responsive-16by9">
+        <div className="embed-responsive embed-responsive-16by9">
           <iframe
-            class="embed-responsive-item"
+            className="embed-responsive-item"
             src="https://www.youtube.com/shorts/SUfRvAddhUk"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
         <div className="card-body">
