@@ -23,15 +23,16 @@ headers.append("Content-Type", "application/json");
  *  If the response is not in the 200 - 399 range the promise is rejected.
  */
 async function fetchJson(url, options, onCancel) {
+  // console.log(`Making request to ${url} with options:`, options);
   try {
     const response = await fetch(url, options);
-
+    console.log("Response", response);
     if (response.status === 204) {
       return null;
     }
 
     const payload = await response.json();
-
+    console.log(`Response payload:`, payload);
     if (payload.error) {
       return Promise.reject({ message: payload.error });
     }

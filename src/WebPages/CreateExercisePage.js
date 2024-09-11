@@ -28,6 +28,7 @@ function CreateExercisePage() {
     setError(null);
     createExercise(exercise, abortController.signal)
     .then(() => {
+      setExercise({ ...initialFormState })
       navigate("/new-exercise");
       console.log(exercise);
     })
