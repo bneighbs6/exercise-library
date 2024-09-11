@@ -1,14 +1,30 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import createExercise from "../utils/api";
 
 function CreateExercisePage() {
   const navigate = useNavigate();
 
+  const initialFormState = {
+    exercise_category: "",
+    exercise_name: "",
+  };
+
+  const [error, setError] = useState(null);
+  const [exercise, setExercise] = useState({ ...initialFormState });
+
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Form submitted.");
-    return navigate("/new-exercise");
+    const abortController = new AbortController(); 
+    setError(null);
+    createExercise(exercise, abortController.signal)
+    .then(() => {
+      navigate("/new-exercise");
+      console.log(exercise);
+    })
+    .catch(setError);
+    return () => abortController.abort(); 
   }
 
   function handleCancel(e) {

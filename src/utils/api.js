@@ -1,5 +1,9 @@
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "https://exercise-library-backend.onrender.com";
 
+/**
+ * Defines the default headers for these functions to work with `json-server`
+ */
 const headers = new Headers();
 headers.append("Content-Type", "application/json");
 
@@ -41,15 +45,17 @@ async function fetchJson(url, options, onCancel) {
   }
 }
 
+// TODO: SET UP API_BASE_URL from deployed databases url :)
+
 // Create an exercise and send data to the API
-export async function createExercise(exercise, signal) {
-  // Send a POST method to the API with exercise information
-  const url = `${API_BASE_URL}/new-exercise`;
+export default async function createExercise(exercise, signal) {
+  // Send a POST method to the API with reservation info
+  const url = `${API_BASE_URL}/knee-exercises`;
   const options = {
     method: "POST",
     headers,
     body: JSON.stringify({ data: exercise }),
     signal,
-  };
+  }
   return await fetchJson(url, options, {});
 }
