@@ -1,13 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 
-/* 
-Card will display an image, 
-a title, 
-a text, 
-and a button to go directly to that exercise's web page 
-*/
-
 function KneePageCard() {
   return (
     <>

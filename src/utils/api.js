@@ -82,3 +82,9 @@ const url = `${API_BASE_URL}${urlSuffix}`;
   }
   return await fetchJson(url, options, {});
 }
+
+export async function listKneeExercise(signal) {
+  const url = `${API_BASE_URL}/knee-exercises`; 
+  console.log(url);
+  return await fetchJson(url, { headers, signal }, []);
+};
