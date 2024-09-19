@@ -53,7 +53,7 @@ function CreateExercisePage() {
             </div>
             <Form>
               <div className="form-group" id="exerciseName">
-                <label htmlFor="exerciseNameInput">Exercise Name</label>
+                <label htmlFor="exerciseName">Exercise Name</label>
                 <input
                   type="text"
                   className="form-control text-center"
@@ -65,7 +65,7 @@ function CreateExercisePage() {
                 />
               </div>
               <div className="form-group" id="exerciseCategory">
-                <label htmlFor="exerciseCategoryInput">Exercise Pattern</label>
+                <label htmlFor="exerciseCategory">Exercise Pattern</label>
                 <input
                   type="text"
                   className="form-control text-center"
