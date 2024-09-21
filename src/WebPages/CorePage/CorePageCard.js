@@ -8,13 +8,13 @@ a text,
 and a button to go directly to that exercise's web page 
 */
 
-function CorePageCard() {
+function CorePageCard({ exercise }) {
   return (
     <>
       <Card className="mx-auto my-3" style={{ width: "18rem", backgroundColor: "black", color: "white" }}>
         <img className="card-img-top" src="..." alt="core exercise" />
         <div className="card-body">
-          <div className="card-title">Core Page Card</div>
+          <div className="card-title">{exercise.exercise_name}</div>
           <p className="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
