@@ -12,7 +12,7 @@ function TrunkPageCard({ exercise }) {
   return (
     <>
       <Card className="mx-auto my-3" style={{ width: "18rem", backgroundColor: "black", color: "white" }}>
-        <img className="card-img-top" src="..." alt="core exercise" />
+        <img className="card-img-top" src="..." alt="trunk exercise" />
         <div className="card-body">
           <div className="card-title">{exercise.exercise_name}</div>
           <p className="card-text">
