@@ -8,7 +8,7 @@ a text,
 and a button to go directly to that exercise's web page 
 */
 
-function CorePageCard({ exercise }) {
+function TrunkPageCard({ exercise }) {
   return (
     <>
       <Card className="mx-auto my-3" style={{ width: "18rem", backgroundColor: "black", color: "white" }}>
@@ -28,4 +28,4 @@ function CorePageCard({ exercise }) {
   );
 }
 
-export default CorePageCard;
+export default TrunkPageCard;

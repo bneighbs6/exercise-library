@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import CorePageCard from "./CorePageCard"
+import TrunkPageCard from "./TrunkPageCard"
 import { Row, Col} from "react-bootstrap";
 
-function CorePage() {
+function TrunkPage() {
     const [exercises, setExercises] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -26,7 +26,7 @@ function CorePage() {
 
     return (
         <>
-        <h1 className="text-center">Core Exercises</h1>
+        <h1 className="text-center">Trunk Exercises</h1>
         {loading ? (
             <h1>Loading...</h1>
         ) : (
@@ -34,7 +34,7 @@ function CorePage() {
                 {exercises.length > 0 ? (
                     exercises.map((exercise) => (
                         <Col key={exercises.exercise_id} xs={12} md={4} lg={3}>
-                            <CorePageCard exercise={exercise} />
+                            <TrunkPageCard exercise={exercise} />
                         </Col>
                     ))
                 ) : (
@@ -49,4 +49,4 @@ function CorePage() {
     )
 }
 
-export default CorePage;
+export default TrunkPage;

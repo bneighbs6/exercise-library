@@ -16,7 +16,7 @@ function NavbarDropdownButton() {
         <DropdownItem onClick={() => handleClick("pull")}>Pull Exercises</DropdownItem>
         <DropdownItem onClick={() => handleClick("hip")}>Hip Exercies</DropdownItem>
         <DropdownItem onClick={() => handleClick("knee")}>Knee Exercises</DropdownItem>
-        <DropdownItem onClick={() => handleClick("core")}>Core Exercises</DropdownItem>
+        <DropdownItem onClick={() => handleClick("trunk")}>Trunk Exercises</DropdownItem>
       </DropdownButton>
     </>
   );
