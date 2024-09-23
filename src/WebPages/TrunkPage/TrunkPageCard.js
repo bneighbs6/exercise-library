@@ -11,17 +11,26 @@ and a button to go directly to that exercise's web page
 function TrunkPageCard({ exercise }) {
   return (
     <>
-      <Card className="mx-auto my-3" style={{ width: "18rem", backgroundColor: "black", color: "white" }}>
-        <img className="card-img-top" src="..." alt="trunk exercise" />
+      <Card
+        className="mx-auto my-3"
+        style={{ width: "18rem", backgroundColor: "black", color: "white" }}
+      >
+        <img className="card-img-top" src="..." alt={exercise.exercise_name} />
         <div className="card-body">
-          <div className="card-title">{exercise.exercise_name}</div>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="/core-page-card" className="btn btn-danger">
-            Go Somewhere
-          </a>
+          <div className="card-title">
+            <h1>{exercise.exercise_name}</h1>
+          </div>
+          <div className="card-text">
+            <p>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+          <div className="card-button">
+            <a href="/core-page-card" className="btn btn-danger">
+              Go Somewhere
+            </a>
+          </div>
         </div>
       </Card>
     </>
