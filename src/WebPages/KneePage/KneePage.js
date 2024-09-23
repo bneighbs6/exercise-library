@@ -29,7 +29,7 @@ export default function KneePage() {
     <>
       <h1 className="text-center">Knee Exercises</h1>
       {loading ? (
-        <h1>Loading...</h1>
+        <h1>Loading Knee Exercises...</h1>
       ) : (
         <Row>
           {exercises.length > 0 ? (

@@ -27,7 +27,7 @@ useEffect(() => {
     <>
       <h1 className="text-center">Hip Exercises</h1>
       {loading ? (
-        <h1>Loading...</h1>
+        <h1>Loading Hip Exercises...</h1>
       ) : (
         <Row>
           {exercises.length > 0 ? (
