@@ -47,6 +47,7 @@ async function exerciseExists(req, res, next) {
 // Creates a new exercise. Used with POST request
 async function create(req, res, next) {
   const data = await service.create(req.body.data);
+  console.log(data);
   res.status(201).json({ data });
 }
 
