@@ -27,8 +27,8 @@ function PullPageCard({ exercise }) {
             </p>
           </div>
           <div className="card-button">
-            <a href="/core-page-card" className="btn btn-danger">
-              Go Somewhere
+            <a href={`/pull-page-card/${exercise.exercise_id}`} className="btn btn-danger">
+              Exercise Details
             </a>
           </div>
         </div>

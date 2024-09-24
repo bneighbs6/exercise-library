@@ -31,7 +31,7 @@ function HipPageCard({ exercise }) {
             href={`/hip-page-card/${exercise.exercise_id}`}
             className="btn btn-danger"
           >
-            Go Somewhere
+            Exercise Details
           </a>
         </div>
       </div>
