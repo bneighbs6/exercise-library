@@ -1,7 +1,7 @@
 // KneePageCard.js
 import React from "react";
 import { Card } from "react-bootstrap";
-import DeleteExerciseButton from "../../Components/DeleteExerciseButton";
+import DeleteExerciseButton from "../../Components/DeleteButtons/DeleteExerciseButton";
 
 function KneePageCard({ exercise }) {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import DeleteExerciseButton from "../../Components/DeleteExerciseButton"
+import DeletePushExerciseButton from "../../Components/DeleteButtons/DeleteExerciseButton";
 
 /* 
 Card will display an image, 
@@ -9,7 +9,8 @@ a text,
 and a button to go directly to that exercise's web page 
 */
 
-function PushPageCard({ exercise }) {
+function PushPageCard({ exercise, loadExercises }) {
+
   return (
     <>
     <Card
@@ -36,7 +37,7 @@ function PushPageCard({ exercise }) {
           </a>
         </div>
         <div className="mx-auto my-3">
-          <DeleteExerciseButton exercise={exercise} />
+          <DeletePushExerciseButton exercise={exercise} loadExercises={loadExercises} />
         </div>
       </div>
     </Card>

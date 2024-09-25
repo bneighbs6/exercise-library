@@ -1,3 +1,4 @@
+// PushPage.js
 import React, { useState, useEffect } from "react";
 import PushPageCard from "./PushPageCard";
 import { Row, Col } from "react-bootstrap";
@@ -8,19 +9,21 @@ export default function PushPage() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    async function loadExercises() {
-      setLoading(true);
-      try {
-        const response = await fetch("https://exercise-library-backend.onrender.com/push-exercises");
-        const exercisesFromAPI = await response.json(); 
-        setExercises(exercisesFromAPI.data);
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-        setLoading(false);
-      }
+  // Defining loadExercises so that I can easily pass it down as a prop to the card
+  const loadExercises = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("https://exercise-library-backend.onrender.com/push-exercises");
+      const exercisesFromAPI = await response.json(); 
+      setExercises(exercisesFromAPI.data);
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
     loadExercises();
   }, []);
 
@@ -33,8 +36,8 @@ export default function PushPage() {
         <Row>
             {exercises.length > 0 ? (
                 exercises.map((exercise) => (
-                    <Col key={exercises.exercise_id} xs={12} md={4} lg={3}>
-                        <PushPageCard exercise={exercise} />
+                    <Col key={exercise.exercise_id} xs={12} md={4} lg={3}>
+                        <PushPageCard exercise={exercise} loadExercises={loadExercises} />
                     </Col>
                 ))
             ) : (
