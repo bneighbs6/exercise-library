@@ -21,8 +21,8 @@ function HomePage() {
 
                     <Row className="mx-auto">
                         <Col className="text-center">
-                        <h2 className="text-center my-auto">Trunk/Core</h2>
-                            <HomePageCard exerciseType={"Core"} exerciseUrl={"core"} />
+                        <h2 className="text-center my-auto">Trunk</h2>
+                            <HomePageCard exerciseType={"Trunk"} exerciseUrl={"trunk"} />
                         </Col>
                     </Row>
 
