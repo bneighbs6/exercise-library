@@ -9,7 +9,7 @@ a text,
 and a button to go directly to that exercise's web page 
 */
 
-function TrunkPageCard({ exercise }) {
+function TrunkPageCard({ exercise , loadExercises, exerciseType }) {
   return (
     <>
       <Card
@@ -33,7 +33,7 @@ function TrunkPageCard({ exercise }) {
             </a>
           </div>
           <div className="mx-auto my-3">
-            <DeleteExerciseButton exercise={exercise} />
+            <DeleteExerciseButton exercise={exercise} loadExercises={loadExercises} exerciseType="trunk" />
           </div>
         </div>
       </Card>
