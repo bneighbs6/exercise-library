@@ -67,7 +67,7 @@ async function update(req, res, next) {
 
 async function destroy(req, res, next) {
   const { exercise } = res.locals;
-  await service.delete(exercise.exercisd_id);
+  await service.delete(exercise.exercise_id);
   res.sendStatus(204);
 }
 
