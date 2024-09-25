@@ -12,25 +12,22 @@ export default function AboutPage() {
       <h1 className="text-center">About Us</h1>
       <Container>
         <Row>
-          <Col className=" text-start">
-            <h2>Some Bullshit</h2>
+          <Col className="text-start">
+            <h2>About the Company</h2>
             <p>
-              Some more bullshit that means absolutely nothing! I really just
-              want to test out what this looks like on the web page.
+            Lorem ipsum odor amet, consectetuer adipiscing elit. Habitasse pellentesque tristique aptent pretium ipsum suscipit.
             </p>
           </Col>
           <Col className="text-center">
-            <h2>Some Bullshit</h2>
+            <h2>Contact the Company</h2>
             <p>
-              Some more bullshit that means absolutely nothing! I really just
-              want to test out what this looks like on the web page.
+            Lorem ipsum odor amet, consectetuer adipiscing elit. Habitasse pellentesque tristique aptent pretium ipsum suscipit.
             </p>
           </Col>
           <Col className="text-end">
-            <h2>Some Bullshit</h2>
+            <h2>About the Creator</h2>
             <p>
-              Some more bullshit that means absolutely nothing! I really just
-              want to test out what this looks like on the web page.
+            Lorem ipsum odor amet, consectetuer adipiscing elit. Habitasse pellentesque tristique aptent pretium ipsum suscipit.
             </p>
           </Col>
         </Row>
