@@ -65,7 +65,7 @@ async function update(req, res, next) {
 // Deletes an exercise by its id
 async function destroy(req, res, next) {
   const exercise = res.locals.exercise;
-  await service.delete(exericse.exercise_id);
+  await service.delete(exercise.exercise_id);
   res.sendStatus(204);
 }
 

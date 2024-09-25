@@ -20,13 +20,13 @@ function read(exerciseId) {
 function update(updatedExercise) {
   return knex("hip_exercises")
     .select("*")
-    .where({ exericse_id: updatedExercise.exercise_id })
+    .where({ exercise_id: updatedExercise.exercise_id })
     .update(updatedExercise, "*");
 }
 
 // Deletes an exercise by its id
 function destroy(exercise_id) {
-  return knex("hip_exercises").where({ exericse_id }).del();
+  return knex("hip_exercises").where({ exercise_id }).del();
 }
 
 function list() {
