@@ -27,11 +27,13 @@ function CreateExercisePage() {
     const abortController = new AbortController(); 
     setError(null);
     createExercise(exercise, abortController.signal)
-    .then(() => {
-      alert("Exercise created.")
-      setExercise({ ...initialFormState })
-      navigate("/new-exercise");
-      console.log(exercise);
+    .then((newExercise) => {
+      alert("Exercise created.");
+      setExercise({ ...initialFormState });
+      const exerciseType = newExercise.exercise_category.toLowerCase(); // Get the exercise type from the new exercise object
+      console.log(exerciseType);
+      navigate(`/${exerciseType}-exercises/`); // Navigate to the exercise page
+      console.log(newExercise);
     })
     .catch(setError);
     return () => abortController.abort(); 
