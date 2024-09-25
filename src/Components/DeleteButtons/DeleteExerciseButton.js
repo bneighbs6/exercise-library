@@ -1,12 +1,12 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { deletePushExercise } from "../../utils/api";
+import { deleteExercise } from "../../utils/api";
 
-function DeletePushExerciseButton({ exercise, loadExercises }) {
+function DeleteExerciseButton({ exercise, loadExercises, exerciseType }) {
 
     async function handleClick() {
         if (window.confirm("Are you sure you want to delete this exercise? This cannot be undone.")) {
-            await deletePushExercise(exercise.exercise_id)
+            await deleteExercise(exerciseType, exercise.exercise_id)
             loadExercises(); 
         }
     }
@@ -18,4 +18,4 @@ function DeletePushExerciseButton({ exercise, loadExercises }) {
     )
 }
 
-export default DeletePushExerciseButton; 
+export default DeleteExerciseButton; 

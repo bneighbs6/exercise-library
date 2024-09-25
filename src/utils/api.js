@@ -90,8 +90,9 @@ export async function listKneeExercise(signal) {
 };
 
 // Deletes a push exercise
-export async function deletePushExercise(exerciseId) {
-  const url = `${API_BASE_URL}/push-exercises/${exerciseId}`;
+export async function deleteExercise(exerciseType, exerciseId) {
+  const url = `${API_BASE_URL}/${exerciseType}-exercises/${exerciseId}`;
+  console.log(url);
   try {
     const deletedExercise = await fetchJson(url, { method: "DELETE", headers }, {});
     console.log("Exercise deleted successfully", deletedExercise);

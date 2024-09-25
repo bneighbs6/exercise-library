@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import DeletePushExerciseButton from "../../Components/DeleteButtons/DeleteExerciseButton";
+import DeleteExerciseButton from "../../Components/DeleteButtons/DeleteExerciseButton";
 
 /* 
 Card will display an image, 
@@ -37,7 +37,7 @@ function PushPageCard({ exercise, loadExercises }) {
           </a>
         </div>
         <div className="mx-auto my-3">
-          <DeletePushExerciseButton exercise={exercise} loadExercises={loadExercises} />
+          <DeleteExerciseButton exercise={exercise} loadExercises={loadExercises} exerciseType="push" />
         </div>
       </div>
     </Card>
