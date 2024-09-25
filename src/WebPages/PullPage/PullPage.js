@@ -27,7 +27,7 @@ function PullPage() {
     <>
     <h1 className="text-center">Pull Exercises</h1>
     {loading ? (
-        <h1>Loading Trunk Exercises...</h1>
+        <h1>Loading Pull Exercises...</h1>
     ) : (
         <Row>
             {exercises.length > 0 ? (
