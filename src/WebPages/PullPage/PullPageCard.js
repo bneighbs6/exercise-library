@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import DeleteExerciseButton from "../../Components/DeleteButtons/DeleteExerciseButton";
+import DeleteExerciseButton from "../../Components/DeleteExerciseButton";
 
 /* 
 Card will display an image, 

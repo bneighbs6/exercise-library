@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { deleteExercise } from "../../utils/api";
+import { deleteExercise } from "../utils/api";
 
 function DeleteExerciseButton({ exercise, loadExercises, exerciseType }) {
 
