@@ -9,7 +9,7 @@ a text,
 and a button to go directly to that exercise's web page 
 */
 
-function PullPageCard({ exercise }) {
+function PullPageCard({ exercise, loadExercises }) {
   return (
     <>
       <Card
@@ -33,7 +33,7 @@ function PullPageCard({ exercise }) {
             </a>
           </div>
           <div className="mx-auto my-3">
-            <DeleteExerciseButton exercise={exercise} />
+            <DeleteExerciseButton exercise={exercise} loadExercises={loadExercises} exerciseType="pull" />
           </div>
         </div>
       </Card>
