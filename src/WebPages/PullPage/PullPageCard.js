@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import DeleteExerciseButton from "../../Components/DeleteExerciseButton";
 
 /* 
 Card will display an image, 
@@ -30,6 +31,9 @@ function PullPageCard({ exercise }) {
             <a href={`/pull-page-card/${exercise.exercise_id}`} className="btn btn-danger">
               Exercise Details
             </a>
+          </div>
+          <div className="mx-auto my-3">
+            <DeleteExerciseButton exercise={exercise} />
           </div>
         </div>
       </Card>
