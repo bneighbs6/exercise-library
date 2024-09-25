@@ -3,7 +3,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import DeleteExerciseButton from "../../Components/DeleteExerciseButton";
 
-function KneePageCard({ exercise }) {
+function KneePageCard({ exercise, loadExercises }) {
   return (
     <Card
       className="mx-auto my-3"
@@ -29,7 +29,7 @@ function KneePageCard({ exercise }) {
           </a>
         </div>
         <div className="mx-auto my-3">
-          <DeleteExerciseButton exercise={exercise} />
+          <DeleteExerciseButton exercise={exercise} loadExercises={loadExercises} exerciseType="knee" />
         </div>
       </div>
     </Card>
