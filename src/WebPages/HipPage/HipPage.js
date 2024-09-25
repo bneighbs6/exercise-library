@@ -7,21 +7,23 @@ const [exercises, setExercises] = useState([]);
 const [error, setError] = useState(null);
 const [loading, setLoading] = useState(false);
 
-useEffect(() => {
-  async function loadExercises()  {
+  // Defining loadExercises so that I can easily pass it down as a prop to the card
+  const loadExercises = async () => {
     setLoading(true);
     try {
       const response = await fetch("https://exercise-library-backend.onrender.com/hip-exercises");
-      const exercisesFromAPI = await response.json();
+      const exercisesFromAPI = await response.json(); 
       setExercises(exercisesFromAPI.data);
       setLoading(false);
     } catch (error) {
       setError(error);
       setLoading(false);
     }
-  }
-  loadExercises(); 
-}, []);
+  };
+
+  useEffect(() => {
+    loadExercises();
+  }, []);
 
   return (
     <>
@@ -33,7 +35,7 @@ useEffect(() => {
           {exercises.length > 0 ? (
             exercises.map((exercise) => (
               <Col key={exercise.exercise_id} xs={12} md={4} lg={3}>
-                <HipPageCard exercise={exercise} />
+                <HipPageCard exercise={exercise} loadExercises={loadExercises} />
               </Col>
             ))
           ) : (
