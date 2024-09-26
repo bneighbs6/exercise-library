@@ -16,6 +16,7 @@ import KneeExercisePage from "../WebPages/KneePage/KneeExercisePage";
 import PushExercisePage from "../WebPages/PushPage/PushExercisePage";
 import PullPageCard from "../WebPages/PullPage/PullPageCard";
 import PullExercisePage from "../WebPages/PullPage/PullExercisePage";
+import TrunkExercisePage from "../WebPages/TrunkPage/TrunkExercisePage";
 
 /* 
 The Layout function will be the layout for the entire web page
@@ -46,6 +47,7 @@ function Layout() {
         <Route path="/knee-exercises/:exerciseId" element={<KneeExercisePage />}></Route>
         <Route path="/push-exercises/:exerciseId" element={<PushExercisePage />}></Route>
         <Route path="/pull-exercises/:exerciseId" element={<PullExercisePage />}></Route>
+        <Route path="/trunk-exercises/:exerciseId" element={<TrunkExercisePage />}></Route>
       </Routes>
 
       <div className="footer my-4">
