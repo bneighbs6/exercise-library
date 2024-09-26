@@ -30,7 +30,7 @@ function PushPageCard({ exercise, loadExercises }) {
         </div>
         <div>
           <a
-            href={`/push-page-card/${exercise.exercise_id}`}
+            href={`/push-exercises/${exercise.exercise_id}`}
             className="btn btn-danger"
           >
             Exercise Details

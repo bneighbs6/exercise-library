@@ -29,7 +29,7 @@ function HipPageCard({ exercise, loadExercises }) {
         </div>
         <div>
           <a
-            href={`/hip-page-card/${exercise.exercise_id}`}
+            href={`/hip-exercises/${exercise.exercise_id}`}
             className="btn btn-danger"
           >
             Exercise Details

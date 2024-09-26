@@ -22,7 +22,7 @@ function KneePageCard({ exercise, loadExercises }) {
         </div>
         <div>
           <a
-            href={`/knee-page-card/${exercise.exercise_id}`}
+            href={`/knee-exercises/${exercise.exercise_id}`}
             className="btn btn-danger"
           >
             Exercise Details

@@ -28,7 +28,7 @@ function TrunkPageCard({ exercise , loadExercises, exerciseType }) {
             </p>
           </div>
           <div className="card-button">
-            <a href={`/trunk-page-card/${exercise.exercise_id}`} className="btn btn-danger">
+            <a href={`/trunk-exercises/${exercise.exercise_id}`} className="btn btn-danger">
               Exercise Details
             </a>
           </div>
