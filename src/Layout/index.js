@@ -14,6 +14,8 @@ import Footer from "../Components/Footer";
 import HipExercisePage from "../WebPages/HipPage/HipExercisePage";
 import KneeExercisePage from "../WebPages/KneePage/KneeExercisePage";
 import PushExercisePage from "../WebPages/PushPage/PushExercisePage";
+import PullPageCard from "../WebPages/PullPage/PullPageCard";
+import PullExercisePage from "../WebPages/PullPage/PullExercisePage";
 
 /* 
 The Layout function will be the layout for the entire web page
@@ -43,6 +45,7 @@ function Layout() {
         <Route path="/hip-exercises/:exerciseId" element={<HipExercisePage />}></Route>
         <Route path="/knee-exercises/:exerciseId" element={<KneeExercisePage />}></Route>
         <Route path="/push-exercises/:exerciseId" element={<PushExercisePage />}></Route>
+        <Route path="/pull-exercises/:exerciseId" element={<PullExercisePage />}></Route>
       </Routes>
 
       <div className="footer my-4">
