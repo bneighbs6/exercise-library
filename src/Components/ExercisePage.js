@@ -30,7 +30,7 @@ function ExercisePage({ exerciseType, ExerciseCard }) {
 
   return (
     <>
-      <h1 className="text-center">{exerciseType} Exercise</h1>
+      <h1 className="text-center">{`${exerciseType.charAt(0).toUpperCase()}${exerciseType.slice(1)}`} Exercise</h1> { /* Capitalizes first letter for exerciseType */}
       {loading ? (
         <h1 className="text-center">Loading Exercise...</h1>
       ) : (
